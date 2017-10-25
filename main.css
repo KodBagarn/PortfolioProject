@@ -1,3 +1,9 @@
 h1 {
   color: #ddd;
 }
+
+footer {
+  background-color: #ddd;
+  margin: 0 auto;
+  padding-left: 50px;
+}
