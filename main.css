@@ -1,5 +1,6 @@
 body {
   background-color: #ddd;
+  margin: 0;
 }
 
 header {
@@ -25,7 +26,14 @@ h1 {
 footer {
   background-color: #fff;
   margin: 0 auto;
-  padding-left: 50px;
+  padding-left: 60px;
   width: 95%;
   box-sizing: border-box;
+  font-family: 'Abel', sans-serif;
+  padding-top: 15px;
+  padding-bottom: 20px;
+}
+
+footer > p {
+  margin: 0;
 }
