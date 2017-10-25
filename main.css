@@ -23,6 +23,31 @@ h1 {
   color: #ddd;
 }
 
+#logindiv{
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1%;
+  text-align: right;
+
+}
+
+#logindiv > #login{
+  background-color: #cccccc;
+  padding: 1%;
+  text-decoration: none;
+  color: #000000;
+}
+
+nav > ul > li {
+  list-style: none;
+  float: left;
+  margin: 3%;
+}
+
+nav > ul > li > a {
+  text-decoration: none;
+  color: #cccccc;
+}
+
 footer {
   background-color: #fff;
   margin: 0 auto;
