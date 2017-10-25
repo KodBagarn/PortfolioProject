@@ -1,3 +1,7 @@
+*{
+  font-family: "Abel", sans-serif;
+}
+
 body {
   background-color: #ddd;
   margin: 0;
@@ -9,8 +13,9 @@ header {
   margin: 0 auto;
 }
 
-header > img {
+#headerimg {
   width: 100%;
+  position: relative;
 }
 
 main {
@@ -26,8 +31,12 @@ h1 {
 
 #logindiv{
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 1%;
+  padding-top: 1%;
+  padding-bottom: 1%;
   text-align: right;
+  position: absolute;
+  width: 95%;
+  z-index: +1;
 
 }
 
@@ -36,6 +45,8 @@ h1 {
   padding: 1%;
   text-decoration: none;
   color: #000000;
+  font-weight: 900;
+  font-size: 22px;
 }
 
 nav > ul > li {
@@ -47,6 +58,7 @@ nav > ul > li {
 nav > ul > li > a {
   text-decoration: none;
   color: #cccccc;
+  background-color: white;
 }
 
 footer {
