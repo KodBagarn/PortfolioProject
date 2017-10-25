@@ -6,8 +6,15 @@
     <title></title>
   </head>
   <body>
+
+    <div id="logindiv">
+        <a id="login" href="#">Log in</a>
+    </div>
+
     <img id="headerimg" src="img/forest.jpg">
+
     <h1>Creative</h1>
+
     <nav>
       <ul>
         <li>
@@ -22,10 +29,8 @@
         <li>
           <a href="#">Contact</a>
         </li>
-        <li>
-          <a href="#"></a>
-        </li>
       </ul>
     </nav>
+
   </body>
 </html>
