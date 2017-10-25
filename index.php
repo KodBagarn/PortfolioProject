@@ -3,9 +3,11 @@
     <link rel="stylesheet" href="main.css">
   </head>
   <body>
-    <?php
-      include("header.php");
-    ?>
+    <header>
+      <?php
+        include("header.php");
+      ?>
+    </header>
     <main>
       <h1>Testrubrik</h1>
     </main>

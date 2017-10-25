@@ -1,9 +1,31 @@
+body {
+  background-color: #ddd;
+}
+
+header {
+  width: 95%;
+  background-color: #fff;
+  margin: 0 auto;
+}
+
+header > img {
+  width: 100%;
+}
+
+main {
+  width: 95%;
+  background-color: #fff;
+  margin: 0 auto;
+}
+
 h1 {
   color: #ddd;
 }
 
 footer {
-  background-color: #ddd;
+  background-color: #fff;
   margin: 0 auto;
   padding-left: 50px;
+  width: 95%;
+  box-sizing: border-box;
 }
