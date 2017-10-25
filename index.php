@@ -11,6 +11,7 @@
     </header>
     <main>
       <h1>Testrubrik</h1>
+      <p>hej</p>
     </main>
     <?php
      include("footer.php");
