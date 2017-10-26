@@ -1,5 +1,8 @@
 <html>
   <head>
+    <?php
+      include"config.php";
+     ?>
     <link rel="stylesheet" href="main.css">
     <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
   </head>

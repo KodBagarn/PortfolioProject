@@ -14,7 +14,6 @@
 
     <img id="headerimg" src="img/forest.jpg">
 
-    <h1>Creative</h1>
 
     <nav>
       <ul>
@@ -22,13 +21,13 @@
           <a class="<?php echo ($current_page == 'index.php' || $current_page == '') ? 'active' : NULL ?>" href="index.php">Home</a>
         </li>
         <li>
-          <a class="<?php echo ($current_page == 'account.php' || $current_page == '') ? 'active' : NULL ?>" href="account.php">Account</a>
+          <a class="<?php echo ($current_page == 'account.php') ? 'active' : NULL ?>" href="account.php">Account</a>
         </li>
         <li>
-          <a class="<?php echo ($current_page == 'aboutus.php' || $current_page == '') ? 'active' : NULL ?>" href="aboutus.php">About us</a>
+          <a class="<?php echo ($current_page == 'aboutus.php') ? 'active' : NULL ?>" href="aboutus.php">About us</a>
         </li>
         <li>
-          <a class="<?php echo ($current_page == 'contact.php' || $current_page == '') ? 'active' : NULL ?>" href="contact.php">Contact</a>
+          <a class="<?php echo ($current_page == 'contact.php') ? 'active' : NULL ?>" href="contact.php">Contact</a>
         </li>
       </ul>
     </nav>

@@ -16,6 +16,7 @@ header {
 #headerimg {
   width: 100%;
   position: relative;
+  height: 50%;
 }
 
 main {
@@ -66,11 +67,19 @@ nav > ul > li > a {
   text-decoration: none;
   color: #999999;
   font-size: 18px;
+  text-align: center;
+
 }
 
 nav > ul > li > a:hover {
   color: #7c7c7c;
   cursor: pointer;
+}
+
+.active{
+  border: solid green 2px;
+  margin 2px;
+
 }
 
 footer {
