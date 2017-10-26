@@ -1,6 +1,6 @@
 <footer>
-  <h3>Contact information/Social media</h3>
-  <p>Email: <a href="mailto:example@gmail.com?">example@gmail.com</a></p>
-  <p>Facebook: <a href="https://www.facebook.com/">portfolioFB</a></p>
-  <p>Instagram: <a href="https://www.instagram.com/">portfolioIG</a></p>
+  <h3>Contact us</h3>
+  <a href="https://www.facebook.com/"><img src="img/fbicon.png" alt=""></a>
+  <a href="https://www.instagram.com/"><img src="img/igicon.png" alt=""></a>
+  <a href="mailto:example@gmail.com?"><img src="img/mailicon.png" alt=""></a>
 </footer>
