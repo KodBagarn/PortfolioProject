@@ -12,7 +12,7 @@
         <a id="login" href="#">Log in</a>
     </div>
 
-    <img id="headerimg" src="img/forest.jpg">
+    <img id="headerimg" src="img/phpprojectheader.jpg">
 
 
     <nav>
