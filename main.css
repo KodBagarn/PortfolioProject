@@ -59,18 +59,23 @@ h1 {
 
 .hamburger{
   display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.hamburger.open{
+  display: none;
+  transition: color 3s ease-out;
 }
 
 .hamburger > img {
-  width: 40px;
+  width: 10%;
   height: auto;
+  margin: 0 auto;
 }
 
 .topnav{
   display: none;
-  overflow: hidden;
-  height: inherit;
-  background-color: #efefef;
 }
 
 .topnav.open{
@@ -83,12 +88,10 @@ h1 {
   margin: 0 auto;
   width: 100%;
   text-align: center;
-  height: inherit;
 }
 
 .topnav > ul > li {
   list-style: none;
-  height: inherit;
   margin-top: -0.5%;
 }
 
@@ -136,6 +139,11 @@ h1 {
 
 
 /*      Contact     */
+
+h2 {
+  padding-bottom: 2px;
+  border-bottom: solid #000 1.5px;
+}
 
 #contactpage {
   overflow: hidden;
@@ -202,6 +210,28 @@ textarea {
   width: 100%;
 }
 
+<<<<<<< HEAD
+=======
+/*      About Us   */
+
+h4{
+  margin-bottom: 0;
+  font-size: 19px;
+  color: #967b39;
+}
+
+#logo{
+  width: 20%;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+}
+
+p{
+  margin-top: 0;
+}
+
+>>>>>>> 3509d0a5a43361569586eff4990996e56c9cf72a
 
 /*      Footer     */
 
@@ -236,15 +266,22 @@ footer > a > img {
   width: 30px;
 }
 
+<<<<<<< HEAD
 
 /*      Media     */
 
 @media (min-width: 550px;){
+=======
+@media (min-width: 550px){
+>>>>>>> 3509d0a5a43361569586eff4990996e56c9cf72a
 
 .hamburger {
   display: none;
 }
 
+.topnav {
+  display: block;
+}
 
 }
 
