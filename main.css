@@ -17,6 +17,7 @@ main {
   box-sizing: border-box;
 }
 
+
 /*      Header/Log in     */
 
 header {
@@ -110,11 +111,29 @@ h1 {
   border-radius: 25%;
 }
 
+
 /*      Home     */
 
 #publicgalleries {
   text-align: center;
 }
+
+#exploreh2 {
+  font-size: 25px;
+}
+
+#searchform {
+
+}
+
+#searchform > input {
+  width: 80%;
+  line-height: 10px;
+  padding: 5px 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
 
 /*      Contact     */
 
@@ -183,6 +202,7 @@ textarea {
   width: 100%;
 }
 
+
 /*      Footer     */
 
 footer {
@@ -216,6 +236,9 @@ footer > a > img {
   width: 30px;
 }
 
+
+/*      Media     */
+
 @media (min-width: 550px;){
 
 .hamburger {
@@ -224,3 +247,10 @@ footer > a > img {
 
 
 }
+
+
+/*
+    400 mobile
+    640 tablet
+    960 full screen
+*/

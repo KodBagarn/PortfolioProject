@@ -16,8 +16,8 @@
     <main>
       <div id="publicgalleries">
         <form id="searchform" action="" method="">
-          <h2>EXPLORE</h2>
-          <input type="search" name="" value="">
+          <h2 id="exploreh2">EXPLORE</h2>
+          <input type="text" name="" value="">
         </form>
       </div>
     </main>
