@@ -52,39 +52,58 @@ h1 {
   font-size: 22px;
 }
 
-nav{
-  overflow: hidden;
+.hamburger{
+  display: block;
 }
 
-nav > ul {
+.hamburger > img {
+  width: 40px;
+  height: auto;
+}
+
+.topnav{
+  display: none;
+  overflow: hidden;
+  height: inherit;
+  background-color: #efefef;
+}
+
+.topnav.open{
+  display: block;
+}
+
+.topnav > ul {
   margin: 0;
   padding: 0;
   margin: 0 auto;
   width: 100%;
-  background-color: #efefef;
   text-align: center;
-  height: 10%;
+  height: inherit;
 }
 
-nav > ul > li {
+.topnav > ul > li {
   list-style: none;
+  height: inherit;
+  margin-top: -0.5%;
 }
 
-nav > ul > li > a {
+.topnav > ul > li > a {
   text-decoration: none;
   color: #999999;
   font-size: 18px;
   margin: 1.5%;
+  padding: 0.5%;
   float: left;
 }
 
-nav > ul > li > a:hover {
+.topnav > ul > li > a:hover {
   color: #7c7c7c;
   cursor: pointer;
 }
 
 .active{
   border: solid green 2px;
+  border-radius: 25%;
 }
 
 footer {
@@ -116,4 +135,13 @@ footer > p > a:hover {
 
 footer > a > img {
   width: 30px;
+}
+
+@media (min-width: 550px;){
+
+.hamburger {
+  display: none;
+}
+
+
 }
