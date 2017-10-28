@@ -1,3 +1,5 @@
+/*      All pages     */
+
 *{
   font-family: "Abel", sans-serif;
 }
@@ -6,6 +8,16 @@ body {
   background-color: #ddd;
   margin: 0;
 }
+
+main {
+  width: 95%;
+  background-color: #fff;
+  margin: 0 auto;
+  padding: 4%;
+  box-sizing: border-box;
+}
+
+/*      Header/Log in     */
 
 header {
   width: 95%;
@@ -17,14 +29,6 @@ header {
   width: 100%;
   position: relative;
   height: auto;
-}
-
-main {
-  width: 95%;
-  background-color: #fff;
-  margin: 0 auto;
-  padding: 3%;
-  box-sizing: border-box;
 }
 
 h1 {
@@ -86,6 +90,81 @@ nav > ul > li > a:hover {
 .active{
   border: solid green 2px;
 }
+
+/*      Home     */
+
+#publicgalleries {
+  text-align: center;
+}
+
+/*      Contact     */
+
+#contactpage {
+  overflow: hidden;
+}
+
+#contactleft {
+  width: 50%;
+  float: left;
+}
+
+#contactleft > p {
+  margin-top: 0;
+}
+
+#contactright {
+  width: 50%;
+  float: right;
+  margin-bottom: 40px;
+}
+
+#contactleft > li {
+  list-style: none;
+  font-weight: bold;
+}
+
+.sociallinks {
+  text-decoration: none;
+  color: #999999;
+  font-weight: normal;
+}
+
+.sociallinks:hover {
+  color: #7c7c7c;
+}
+
+#contactform {
+  margin-bottom: 40px;
+  width: 70%;
+  padding: 15px;
+  padding-bottom: 20px;
+  border: 1px solid #000;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+#contactform > h2 {
+  margin: 0;
+  margin-top: 10px;
+}
+
+#contactsubmit {
+  float: right;
+}
+
+.contacth3 {
+  margin: 0;
+  margin-bottom: 3px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+textarea {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+/*      Footer     */
 
 footer {
   background-color: #efefef;
