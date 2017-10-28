@@ -118,6 +118,11 @@ h1 {
 
 /*      Contact     */
 
+h2 {
+  padding-bottom: 2px;
+  border-bottom: solid #000 1.5px;
+}
+
 #contactpage {
   overflow: hidden;
 }
@@ -182,6 +187,26 @@ textarea {
   margin-bottom: 10px;
   width: 100%;
 }
+
+/*      About Us   */
+
+h4{
+  margin-bottom: 0;
+  font-size: 19px;
+  color: #967b39;
+}
+
+#logo{
+  width: 20%;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+}
+
+p{
+  margin-top: 0;
+}
+
 
 /*      Footer     */
 
