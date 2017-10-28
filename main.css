@@ -64,7 +64,7 @@ h1 {
 
 .hamburger.open{
   display: none;
-  transition: color 3s ease-out;
+  /*transition: color 3s ease-out;*/
 }
 
 .hamburger > img {
