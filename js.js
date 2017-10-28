@@ -4,6 +4,7 @@ $(document).ready( function() {
 
 	icon.click( function(event) {
 		event.preventDefault();
+		icon.toggleClass("open");
 		menu.toggleClass("open");
 	} );
 } );

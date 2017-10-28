@@ -18,7 +18,7 @@
 
     <a class="hamburger" href="#"><img src="img/hamburger.png"></a>
 
-    <class="topnav" nav>
+    <nav class="topnav">
       <ul>
         <li>
           <a class="<?php echo ($current_page == 'index.php' || $current_page == '') ? 'active' : NULL ?>" href="index.php">Home</a>
