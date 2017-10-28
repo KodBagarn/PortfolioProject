@@ -210,8 +210,7 @@ textarea {
   width: 100%;
 }
 
-<<<<<<< HEAD
-=======
+
 /*      About Us   */
 
 h4{
@@ -231,7 +230,6 @@ p{
   margin-top: 0;
 }
 
->>>>>>> 3509d0a5a43361569586eff4990996e56c9cf72a
 
 /*      Footer     */
 
@@ -266,14 +264,9 @@ footer > a > img {
   width: 30px;
 }
 
-<<<<<<< HEAD
-
 /*      Media     */
 
-@media (min-width: 550px;){
-=======
 @media (min-width: 550px){
->>>>>>> 3509d0a5a43361569586eff4990996e56c9cf72a
 
 .hamburger {
   display: none;
