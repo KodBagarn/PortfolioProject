@@ -17,6 +17,7 @@ main {
   box-sizing: border-box;
 }
 
+
 /*      Header/Log in     */
 
 header {
@@ -113,11 +114,29 @@ h1 {
   border-radius: 25%;
 }
 
+
 /*      Home     */
 
 #publicgalleries {
   text-align: center;
 }
+
+#exploreh2 {
+  font-size: 25px;
+}
+
+#searchform {
+
+}
+
+#searchform > input {
+  width: 80%;
+  line-height: 10px;
+  padding: 5px 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
 
 /*      Contact     */
 
@@ -191,6 +210,8 @@ textarea {
   width: 100%;
 }
 
+<<<<<<< HEAD
+=======
 /*      About Us   */
 
 h4{
@@ -210,6 +231,7 @@ p{
   margin-top: 0;
 }
 
+>>>>>>> 3509d0a5a43361569586eff4990996e56c9cf72a
 
 /*      Footer     */
 
@@ -244,7 +266,14 @@ footer > a > img {
   width: 30px;
 }
 
+<<<<<<< HEAD
+
+/*      Media     */
+
+@media (min-width: 550px;){
+=======
 @media (min-width: 550px){
+>>>>>>> 3509d0a5a43361569586eff4990996e56c9cf72a
 
 .hamburger {
   display: none;
@@ -255,3 +284,10 @@ footer > a > img {
 }
 
 }
+
+
+/*
+    400 mobile
+    640 tablet
+    960 full screen
+*/
