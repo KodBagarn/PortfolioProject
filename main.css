@@ -59,10 +59,10 @@ h1 {
 }
 
 .hamburger{
-  margin: 2%;
+  margin-top: 2%;
   width: 100%;
   display: inline-block;
-  margin-bottom: -15%;
+  margin-bottom: -8%;
 }
 
 .hamburger.open{
@@ -129,6 +129,7 @@ h1 {
 }
 
 #exploreh2 {
+  margin-bottom: 0;
   font-size: 25px;
   border-bottom: none;
 }
