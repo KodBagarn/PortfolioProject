@@ -21,7 +21,7 @@
         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
-      <img class="aboutusimg" src="img/vision">
+      <img class="aboutusimg" src="img/vision.png">
 
       <h4>Purpose</h4>
       <p>
@@ -30,7 +30,7 @@
         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
-      <img class="aboutusimg" src="img/purpose">
+      <img class="aboutusimg" src="img/purpose.png">
 
       <h4>Organisation</h4>
       <p>
@@ -39,7 +39,7 @@
         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
-      <img class="aboutusimg" src="img/organization">
+      <img class="aboutusimg" src="img/organization.png">
 
       <!--<img id="logo" src="img/templogo.png"> -->
 
