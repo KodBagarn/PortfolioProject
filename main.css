@@ -237,8 +237,16 @@ h4{
   display: block;
 }
 
-p{
+p{ /* this styling is meant for about us page only, if conflict emerges make own class*/
   margin-top: 0;
+  margin-bottom: -4%;
+}
+
+.aboutusimg {
+  display: block;
+  width: 20%;
+  height: auto;
+  margin-left: auto;
 }
 
 
