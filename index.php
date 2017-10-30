@@ -17,7 +17,7 @@
       <div id="publicgalleries">
         <form id="searchform" action="" method="">
           <h2 id="exploreh2">EXPLORE</h2>
-          <input type="text" name="" value="" placeholder="Search for #TAGS, USERS or PORTFOLIOS...">
+          <input type="text" name="" value="">
         </form>
         <img id="questionmark" src="img/questionmark.png" alt="">
       </div>
