@@ -71,7 +71,7 @@ h1 {
 }
 
 .hamburger > img {
-  width: 12%;
+  width: 8%;
   height: auto;
   margin: 0 auto;
   display: block;
@@ -79,6 +79,7 @@ h1 {
 
 .topnav{
   display: none;
+  margin-bottom: 1%;
 }
 
 .topnav.open{
@@ -159,7 +160,7 @@ h1 {
 
 h2 {
   margin-top: 0;
-  padding-top: 15%;
+  padding-top: 16%;
   padding-bottom: 2px;
   border-bottom: solid #000 1.5px;
 }
@@ -245,16 +246,17 @@ h4{
   display: block;
 }
 
-p{ /* this styling is meant for about us page only, if conflict emerges make own class*/
+.aboutusp{
   margin-top: 0;
-  margin-bottom: -4%;
+  margin-bottom: 0;
 }
 
 .aboutusimg {
   display: block;
-  width: 20%;
+  width: 60px;
   height: auto;
   margin-left: auto;
+  margin-right: 2%;
 }
 
 
