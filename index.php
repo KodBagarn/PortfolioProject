@@ -19,6 +19,7 @@
           <h2 id="exploreh2">EXPLORE</h2>
           <input type="text" name="" value="" placeholder="Search for #TAGS, USERS or PORTFOLIOS...">
         </form>
+        <img id="questionmark" src="img/questionmark.png" alt="">
       </div>
     </main>
     <?php
