@@ -110,17 +110,22 @@ h1 {
 }
 
 #topnav > ul > li > a:hover {
-  color: #7c7c7c;
+  /*color: #7c7c7c;*/
   cursor: pointer;
+  border-bottom: 2px solid #ffcc75;
+  color: #d1d1d1;
 }
 
 .active{
-  border: solid #967b39 2px;
-  border-radius: 5px;
+  /*border: solid #967b39 2px;
+  border-radius: 5px;*/
+  border-bottom: 2px solid #f79c00;
+  /*background-color: rgba(247, 156, 0, 0.2);*/
 }
 
 .active:hover {
-  border: solid #7a652f 2px;
+  /*border: solid #7a652f 2px;*/
+  border-bottom: 2px solid #f79c00;
 }
 
 
@@ -227,32 +232,16 @@ h2 {
   margin-top: 20px;
 }
 
-#contactleft > li {
-  list-style: none;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.sociallinks {
-  text-decoration: none;
-  color: #999999;
-  font-weight: normal;
-  font-size: 14px;
-}
-
-.sociallinks:hover {
-  color: #7c7c7c;
-}
-
 #contactform {
   margin-bottom: 40px;
   width: 100%;
   padding: 20px;
-  padding-bottom: 20px;
   margin: 0 auto;
   overflow: hidden;
   box-sizing: border-box;
-  background-color: #efefef;
+  background-color: #f79c00;
+  /*border: 2px solid #e0e0e0;*/
+  text-align: center;
 }
 
 #contactform > h2 {
@@ -260,16 +249,32 @@ h2 {
   padding: 0;
   border: none;
   font-size: 18px;
-  margin-top: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: #fff;
 }
 
 #contactform > input {
-  width: 80%;
+  width: 100%;
+  padding: 8px 0;
+  padding-left: 8px;
+  font-size: 12px;
+  margin-top: 8px;
+  border: none;
+  background-color: #fff;
+}
+
+#contactform > input:focus {
+  outline: 2px solid #e0e0e0;
+}
+
+#contactform > input::placeholder {
+  color: #bababa;
 }
 
 #contactform > #contactsubmit {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 30px;
   display: block;
   margin: 0 auto;
   margin-top: 10px;
@@ -277,7 +282,13 @@ h2 {
   border: none;
   color: #fff;
   font-size: 14px;
-  background-color: #333;
+  border: 2px solid #fff;
+  padding: 0;
+  background-color: #f79c00;
+}
+
+#contactform > #contactsubmit:focus {
+  outline: none;
 }
 
 #contactform > #contactsubmit:hover {
@@ -285,15 +296,16 @@ h2 {
   cursor: pointer;
 }
 
-.contacth3 {
-  margin: 0;
-  margin-top: 10px;
-  font-size: 14px;
-}
-
 textarea {
   margin-bottom: 10px;
   width: 100%;
+  border: none;
+  background-color: #fff;
+  min-width: 234.41px;
+}
+
+textarea:focus {
+  outline: 2px solid #e0e0e0;
 }
 
 
@@ -302,7 +314,8 @@ textarea {
 h4{
   margin-bottom: 0;
   font-size: 19px;
-  color: #967b39;
+  /*color: #967b39;*/
+  color: #f79c00;
 }
 
 #logo{
@@ -339,17 +352,6 @@ footer {
   padding-bottom: 5%;
 }
 
-footer > p {
-  margin: 0;
-  font-weight: bold;
-}
-
-footer > p > a {
-  text-decoration: none;
-  font-weight: normal;
-  color: #999999;
-}
-
 footer > p > a:hover {
   color: #7c7c7c;
   cursor: pointer;
@@ -357,6 +359,11 @@ footer > p > a:hover {
 
 footer > a > img {
   width: 30px;
+  margin-bottom: 15px;
+}
+
+footer > a > img:hover {
+  opacity: 0.8;
 }
 
 /*      Media     */

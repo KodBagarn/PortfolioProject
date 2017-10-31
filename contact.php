@@ -19,32 +19,17 @@
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            <li>
-              Facebook: <a class="sociallinks" href="https://www.facebook.com/">https://www.facebook.com/</a>
-            </li>
-            <li>
-              Instagram: <a class="sociallinks" href="https://www.instagram.com/">https://www.instagram.com/</a>
-            </li>
-            <li>
-              Youtube: <a class="sociallinks" href="https://www.youtube.com/">https://www.youtube.com/</a>
-            </li>
-            <li>
-              Twitter: <a class="sociallinks" href="https://www.twitter.com/">https://www.twitter.com/</a>
-            </li>
           </p>
         </div>
 
         <div id="contactright">
           <form id="contactform" action="" method="">
-            <h2>Send us an e-mail!</h2>
-            <h3 class="contacth3">Full name</h3>
-            <input type="text" name="fullname" value="">
-            <h3 class="contacth3">E-mail</h3>
-            <input type="email" name="email" value="">
+            <input type="text" name="fullname" placeholder="full name">
+            <input type="email" name="email" placeholder="e-mail">
             <br><br>
-            <textarea name="name" rows="8" cols="60"></textarea>
+            <textarea name="name" rows="6" cols="60"></textarea>
             <br>
-            <input id="contactsubmit" type="submit" name="submit" value="▶">
+            <input id="contactsubmit" type="submit" name="submit" value="Send">
           </form>
         </div>
       </div>
