@@ -7,7 +7,7 @@ var menu = document.getElementById('topnav');
 
 
 function toggleNav(){
-	menu.classList.toggle("open");
+	menu.classList.replace("close","open");
 }
 
 	/*if (icon.toggleClass("open")= true) {
