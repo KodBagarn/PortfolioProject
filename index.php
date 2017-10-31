@@ -28,7 +28,7 @@
   				<p>You can search for #TAGS, users or portfolios</p>
         </div>
 
-
+        <p>hejhejtestar</p>
         <img id="placeholderimg" src="img/placeholderimg.jpg" alt="">
         <img id="placeholderimg" src="img/pl2.jpg" alt="">
         <img id="placeholderimg" src="img/pl3.jpg" alt="">
