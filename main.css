@@ -19,10 +19,6 @@ main {
   box-sizing: border-box;
 }
 
-#indexmain {
-  padding: 0;
-}
-
 
 /*      Header/Log in     */
 
@@ -53,6 +49,7 @@ h1 {
   width: 95%;
   z-index: +1;
   min-width: 304px;
+
 }
 
 #logindiv > #login{
@@ -61,7 +58,7 @@ h1 {
   text-decoration: none;
   color: #000000;
   font-weight: 900;
-  font-size: 22px;
+  font-size: 21px;
 }
 
 .hamburger{
@@ -133,7 +130,6 @@ h1 {
 #publicgalleries {
   text-align: center;
   overflow: hidden;
-  width: 100%;
 }
 
 #exploreh2 {
@@ -145,19 +141,23 @@ h1 {
 }
 
 #searchform {
-  margin-bottom: 40px;
 }
 
 #searchform > input {
   width: 80%;
+  line-height: 10px;
   padding: 5px 5px;
   border-radius: 5px;
   border: 1px solid #dddddd;
 }
 
-#questionbutton {
+#questionmark {
   height: 20px;
   float: right;
+<<<<<<< HEAD
+  margin-top: -39px;
+  margin-right: 10px;
+=======
   margin-top: -63px;
   margin-right: 1%;
 }
@@ -199,6 +199,7 @@ h1 {
   margin-bottom: 20px;
   display: inline-block;
   font-size: 20px;
+>>>>>>> 0c6c2a770d33aa27ba8b7bc0cf74021f71f29ac7
 }
 
 
@@ -339,14 +340,9 @@ footer > a > img {
   width: 30px;
 }
 
-footer > a > img:hover {
-  opacity: 0.8;
-}
-
-
 /*      Media     */
 
-@media (min-width: 640px){
+@media (min-width: 550px){
 
 .hamburger {
   display: none;
@@ -360,9 +356,7 @@ footer > a > img:hover {
 
 
 /*
-    320 mobile
+    400 mobile
     640 tablet
     960 full screen
-
-    Show less portfolios on mobile view or make them even smaller maybe?
 */
