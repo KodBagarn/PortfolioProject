@@ -1,12 +1,14 @@
-$(document).ready( function() {
-	var icon = $(".hamburger");
-	var menu = $(".topnav");
 
-	icon.click(function(event) {
-		event.preventDefault();
-		icon.toggleClass("open");
-		menu.toggleClass("open");
-	} );
+
+
+var icon = document.getElementsByClassName("hamburger");
+var menu = document.getElementsByClassName('topnav');
+
+function toggleNav(){
+	icon.classList.toggle("open");
+	menu.classList.toggle("open");
+
+}
 
 	/*if (icon.toggleClass("open")= true) {
 		menu.hover(function(event){
@@ -18,7 +20,7 @@ $(document).ready( function() {
 
 
 
-});
+
 
 var questionmark = document.getElementById("infotext");
 

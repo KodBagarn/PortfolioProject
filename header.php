@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="main.css">
     <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <script src="js.js"></script>
     <title></title>
   </head>
@@ -16,7 +15,7 @@
 
     <img id="headerimg" src="img/phpprojectheadersmall.jpg">
 
-    <a class="hamburger" href="#"><img src="img/hamburger.png"></a>
+    <a class="hamburger" href="#" onmouseover="toggleNav"><img src="img/hamburger.png"></a>
 
     <nav class="topnav">
       <ul>
