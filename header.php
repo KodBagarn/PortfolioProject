@@ -14,7 +14,7 @@
         <a id="login" href="#">Log in</a>
     </div>
 
-    <img id="headerimg" src="img/phpprojectheader.jpg">
+    <img id="headerimg" src="img/phpprojectheadersmall.jpg">
 
     <a class="hamburger" href="#"><img src="img/hamburger.png"></a>
 
