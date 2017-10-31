@@ -65,34 +65,29 @@ h1 {
   font-size: 21px;
 }
 
-.hamburger{
+#hamburger{
   margin-top: 2%;
   margin-bottom: 5.2%;
   width: 100%;
   display: inline-block;
 }
 
-.hamburger.open{
-  display: none;
-  /*transition: color 3s ease-out;*/
-}
-
-.hamburger > img {
+#hamburger > img {
   width: 8%;
   height: auto;
   margin: 0 auto;
   display: block;
 }
 
-.topnav{
+#topnav{
   display: none;
 }
 
-.topnav.open{
+#topnav.open{
   display: block;
 }
 
-.topnav > ul {
+#topnav > ul {
   margin: 0;
   padding: 0;
   margin: 0 auto;
@@ -100,12 +95,12 @@ h1 {
   text-align: center;
 }
 
-.topnav > ul > li {
+#topnav > ul > li {
   list-style: none;
   margin-top: -0.5%;
 }
 
-.topnav > ul > li > a {
+#topnav > ul > li > a {
   text-decoration: none;
   color: #999999;
   font-size: 18px;
@@ -114,7 +109,7 @@ h1 {
   float: left;
 }
 
-.topnav > ul > li > a:hover {
+#topnav > ul > li > a:hover {
   color: #7c7c7c;
   cursor: pointer;
 }
