@@ -154,8 +154,52 @@ h1 {
 #questionmark {
   height: 20px;
   float: right;
+<<<<<<< HEAD
   margin-top: -39px;
   margin-right: 10px;
+=======
+  margin-top: -63px;
+  margin-right: 1%;
+}
+
+#questionbutton:hover {
+  opacity: 0.8;
+}
+
+#placeholderimg {
+  width: 320px;
+  margin-bottom: 10px;
+}
+
+#infotext {
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 160px;
+  height: 80px;
+  border-radius: 5px;
+  float: right;
+  color: #fff;
+  position: absolute;
+  padding: 20px;
+  margin-left: 50px;
+  margin-top: 20px;
+}
+
+.closed {
+	display: none;
+}
+
+.open {
+	display: block;
+}
+
+#loadlink {
+  text-decoration: none;
+  color: #000;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: inline-block;
+  font-size: 20px;
+>>>>>>> 0c6c2a770d33aa27ba8b7bc0cf74021f71f29ac7
 }
 
 
