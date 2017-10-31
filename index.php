@@ -20,13 +20,15 @@
           <input type="text" name="" value="">
         </form>
 
-        <a href="#" onmouseover="toggleClassInfo()" onmouseout="toggleClassInfo()">
+        <a href="#" onmouseover="toggleClassInfo();" onmouseout="toggleClassInfo();">
           <img id="questionbutton" src="img/questionmark.png" alt="">
         </a>
 
         <div id="infotext" class="closed">
   				<p>You can search for #TAGS, users or portfolios</p>
         </div>
+
+        
 
         <img id="placeholderimg" src="img/placeholderimg.jpg" alt="">
         <img id="placeholderimg" src="img/pl2.jpg" alt="">

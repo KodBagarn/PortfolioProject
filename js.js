@@ -1,13 +1,13 @@
+window.onload
+var icon = document.getElementById("hamburger").addEventListener("click", toggleNav);
+
+var menu = document.getElementById('topnav');
 
 
 
-var icon = document.getElementsByClassName("hamburger");
-var menu = document.getElementsByClassName('topnav');
 
 function toggleNav(){
-	icon.classList.toggle("open");
 	menu.classList.toggle("open");
-
 }
 
 	/*if (icon.toggleClass("open")= true) {
