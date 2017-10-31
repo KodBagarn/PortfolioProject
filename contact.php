@@ -42,9 +42,9 @@
             <h3 class="contacth3">E-mail</h3>
             <input type="email" name="email" value="">
             <br><br>
-            <textarea name="name" rows="9" cols="60"></textarea>
+            <textarea name="name" rows="8" cols="60"></textarea>
             <br>
-            <input id="contactsubmit" type="submit" name="submit" value="Send">
+            <input id="contactsubmit" type="submit" name="submit" value="▶">
           </form>
         </div>
       </div>
