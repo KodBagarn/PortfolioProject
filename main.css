@@ -66,8 +66,8 @@ h1 {
 }
 
 #hamburger{
-  margin-top: 2%;
-  margin-bottom: 5.2%;
+  margin-top: 5%;
+  margin-bottom: 0%;
   width: 100%;
   display: inline-block;
 }
@@ -75,7 +75,8 @@ h1 {
 #hamburger > img {
   width: 8%;
   height: auto;
-  margin: 0 auto;
+  float: right;
+  margin-right: 10px;
   display: block;
 }
 
@@ -180,6 +181,10 @@ h1 {
   margin-top: 20px;
 }
 
+.close {
+	display: none;
+}
+
 .closed {
 	display: none;
 }
@@ -202,7 +207,7 @@ h1 {
 
 h2 {
   margin-top: 0;
-  padding-top: 16%;
+  padding-top: 0%;
   padding-bottom: 2px;
   border-bottom: solid #000 1.5px;
 }
@@ -361,13 +366,13 @@ footer > a > img {
 
 /*      Media     */
 
-@media (min-width: 550px){
+@media (min-width: 640px){
 
-.hamburger {
+#hamburger {
   display: none;
 }
 
-.topnav {
+#topnav {
   display: block;
 }
 
