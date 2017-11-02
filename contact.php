@@ -23,13 +23,13 @@
         </div>
 
         <div id="contactright">
-          <form id="contactform" action="" method="">
+          <form class="forms" action="" method="POST">
             <input type="text" name="fullname" placeholder="full name">
             <input type="email" name="email" placeholder="e-mail">
             <br><br>
             <textarea name="name" rows="6" cols="60"></textarea>
             <br>
-            <input id="contactsubmit" type="submit" name="submit" value="Send">
+            <input class="formsubmit" type="submit" name="submit" value="Send">
           </form>
         </div>
       </div>

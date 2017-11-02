@@ -9,7 +9,7 @@
   <body>
 
     <div id="logindiv">
-        <a id="login" href="#">Log in</a>
+        <a id="login" href="account.php">Log in</a>
     </div>
 
     <img id="headerimg" src="img/phpprojectheadersmall.jpg">

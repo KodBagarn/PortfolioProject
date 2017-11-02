@@ -14,7 +14,13 @@
     </header>
     <main>
       <h2>Account</h2>
-      <p>Karin älskar sin lorem ipsum</p>
+      <form class="forms" action="index.html" method="post">
+        <input type="text" name="username" placeholder="username">
+        <input type="text" name="password" placeholder="password">
+        <input class="formsubmit" type="submit" name="login" value="Log in">
+        <br>
+        <a href="#">Don't have an account? Click me!</a>
+      </form>
 <?php // visa log in form om inte inloggad, ta bort när inloggad, file upload, form för namn, tags och beskrivning av bilden, val att göra portfolion public eller secret. kunna uppdatera bilder och ta bort dem ?>
 
     </main>
