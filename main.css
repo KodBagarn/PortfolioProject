@@ -220,6 +220,14 @@ font-weight: 700;
 color: #ffffff;
 }
 
+/*      Register    */
+
+.forms > p{
+  margin: 12px 0 -8px 0;
+  float: left;
+  color: #ffffff;
+}
+
 
 /*      Contact     */
 

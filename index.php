@@ -5,6 +5,7 @@
      ?>
     <link rel="stylesheet" href="main.css">
     <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+    <title>Creative Colony</title>
   </head>
   <body>
     <header>
@@ -28,7 +29,7 @@
   				<p>You can search for #TAGS, users or portfolios</p>
         </div>
 
-        
+
 
         <img id="placeholderimg" src="img/placeholderimg.jpg" alt="">
         <img id="placeholderimg" src="img/pl2.jpg" alt="">

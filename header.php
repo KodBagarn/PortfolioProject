@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="main.css">
     <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
-    <title></title>
+    <title>Creative Colony</title>
   </head>
   <body>
 
