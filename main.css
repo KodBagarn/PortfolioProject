@@ -86,6 +86,7 @@ h1 {
 
 #topnav.open{
   display: block;
+  margin-left: 2.5%;
 }
 
 #topnav > ul {
