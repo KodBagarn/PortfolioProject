@@ -18,8 +18,12 @@
       <div id="contactpage">
         <div id="contactleft">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            If you have any questions you are more than welcome to contact us by filling in the form down below.
+            You can also follow us on social media for regular updates. You will find the links at the bottom of the page!
+            <br><br>
+            <b>Phone:</b> 036-204597
+            <br>
+            <b>Opening hours:</b> 08:00-17:30
           </p>
         </div>
 

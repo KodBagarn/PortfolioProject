@@ -149,21 +149,24 @@ h1 {
 
 #searchform {
   margin-bottom: 40px;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 #searchform > input {
-  width: 70%;
+  width: 85%;
   line-height: 10px;
   padding: 5px 5px;
   border-radius: 5px;
   border: 1px solid #dddddd;
+  max-width: 580px;
 }
 
 #questionbutton {
   height: 20px;
-  float: right;
-  margin-top: -63px;
-  margin-right: 7%;
+  margin-left: 5px;
+  margin-bottom: -6px;
 }
 
 #questionbutton:hover {
@@ -244,25 +247,23 @@ h2 {
   overflow: hidden;
 }
 
-/*#contactleft {
-  width: 50%;
-  float: left;
-}*/
-
 #contactleft > p {
   margin-top: 0;
 }
 
 #contactright {
-  /*width: 50%;
-  float: right;*/
   margin-bottom: 40px;
   margin-top: 20px;
+}
+
+#contactright > form {
+  max-width: 380px;
 }
 
 .forms {
   margin-bottom: 40px;
   width: 100%;
+  max-width: 400px;
   padding: 20px;
   margin: 0 auto;
   overflow: hidden;
@@ -270,6 +271,15 @@ h2 {
   background-color: #f79c00;
   /*border: 2px solid #e0e0e0;*/
   text-align: center;
+}
+
+.forms > #usernamep {
+  margin-top: 0;
+}
+
+.forms > a > img {
+  width: 25px;
+  float: left;
 }
 
 .forms > h2 {
@@ -305,7 +315,7 @@ h2 {
   height: 30px;
   display: block;
   margin: 0 auto;
-  margin-top: 10px;
+  margin-top: 20px;
   border-radius: 50px;
   border: none;
   color: #fff;
@@ -325,7 +335,6 @@ h2 {
 }
 
 textarea {
-  margin-bottom: 10px;
   width: 100%;
   border: none;
   background-color: #fff;
@@ -342,15 +351,7 @@ textarea:focus {
 h4{
   margin-bottom: 0;
   font-size: 19px;
-  /*color: #967b39;*/
   color: #f79c00;
-}
-
-#logo{
-  width: 20%;
-  margin: 0 auto;
-  text-align: center;
-  display: block;
 }
 
 .aboutusp{
@@ -374,9 +375,10 @@ footer {
   margin: 0 auto;
   padding-left: 8%;
   width: 95%;
+  max-height: 153px;
   box-sizing: border-box;
   font-family: 'Abel', sans-serif;
-  padding-top: 3%;
+  padding-top: 6%;
   padding-bottom: 5%;
   overflow: hidden;
 }
@@ -392,13 +394,14 @@ footer > a > img {
 }
 
 footer > a > img:hover {
-  opacity: 0.8;
+  opacity: 0.6;
+  width: 40px;
+  margin-top: -5px;
 }
 
 footer > #logofooter{
   float: right;
   width: 30%;
-  margin-top: -4%;
   margin-right: 8%;
   max-width: 140px;
 }
@@ -407,13 +410,35 @@ footer > #logofooter{
 
 @media (min-width: 640px){
 
-#hamburger {
-  display: none;
+  #hamburger {
+    display: none;
+  }
+
+  #topnav {
+    display: block;
+    margin-left: 2.5%;
+  }
+
+  footer > a > img {
+    width: 35px;
+  }
+
 }
 
-#topnav {
-  display: block;
-}
+@media (min-width: 700px){
+
+  #contactleft {
+    width: 50%;
+    float: left;
+    padding-right: 10px;
+    box-sizing: border-box;
+  }
+
+  #contactright {
+    width: 50%;
+    float: right;
+    margin-top: 0;
+  }
 
 }
 

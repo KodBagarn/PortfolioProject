@@ -19,11 +19,12 @@
         <form id="searchform" action="" method="">
           <h2 id="exploreh2">EXPLORE</h2>
           <input type="text" name="" value="">
+          <a href="#" onmouseover="toggleClassInfo();" onmouseout="toggleClassInfo();">
+            <img id="questionbutton" src="img/questionmark.png" alt="">
+          </a>
         </form>
 
-        <a href="#" onmouseover="toggleClassInfo();" onmouseout="toggleClassInfo();">
-          <img id="questionbutton" src="img/questionmark.png" alt="">
-        </a>
+
 
         <div id="infotext" class="closed">
   				<p>You can search for #TAGS, users or portfolios</p>

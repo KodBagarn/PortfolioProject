@@ -13,7 +13,9 @@
     <main>
       <br>
       <form class="forms" action="" method="post">
-        <p>Select a username</p>
+        <a href="account.php"><img src="img/backiconwhite.png"></a>
+        <br><br>
+        <p id="usernamep">Select a username</p>
         <input type="text" name="newuser" placeholder="Username">
         <p>Select a secure password</p>
         <input type="text" name="newpassword" placeholder="Password">
