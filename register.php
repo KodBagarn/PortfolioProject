@@ -1,5 +1,5 @@
 <?php
-@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -23,7 +23,7 @@ if ($db->connect_error) {
 
 function add_userinfo(){
 
-  @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+  @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
   $newuser = $_POST['newuser'];
   $newpassword = $_POST['newpassword'];
@@ -71,7 +71,7 @@ function add_userinfo(){
 
 function get_user(){
 
-@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
 $query = ("SELECT username FROM users");
 $stmt = $db->prepare($query);
