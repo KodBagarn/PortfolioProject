@@ -8,10 +8,10 @@ $strings = explode('/', $url);
 
 $current_page = end($strings);
 
-//$dbname = 'book_club_database';
-//$dbuser = 'root';
-//$dbpass = '';
-//$dbserver = 'localhost';
+$dbname = 'portfoliodb';
+$dbuser = 'root';
+$dbpass = '';
+$dbserver = 'localhost';
 
 #the following three will get you the current page, how?
 #first you assign the URI (which is the end of the URL as we talked on the Lecture 2)
