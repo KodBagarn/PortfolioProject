@@ -1,5 +1,6 @@
 <?php
-@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+#check if we're connected to the database
+@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -9,21 +10,11 @@ if ($db->connect_error) {
  ?>
 
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
-
 #we can create a function to add comments
 #basically it inserts a comment in a database.
-
 function add_userinfo(){
 
-  @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+  @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
   $newuser = $_POST['newuser'];
   $newpassword = $_POST['newpassword'];
@@ -31,8 +22,6 @@ function add_userinfo(){
   $newlname = $_POST['lastname'];
   $newemail = $_POST['email'];
   $newphone = $_POST['phone'];
-
-
 
   #here we add the html entities and string escaping
   $newuser= htmlentities($newuser);
@@ -57,36 +46,10 @@ function add_userinfo(){
   #try the iframe after you add the "htmlentities"
 
   $stmt = $db->prepare("INSERT INTO users(username, userpass, fname, lname, mail, phone) VALUES (?, ?, ?, ?, ?, ?)");
-  $stmt = bind_param('sssssi', $newuser, $newpassword, $newfname, $newlname, $newemail, $newphone);
+  $stmt->bind_param('sssssi', $newuser, $newpassword, $newfname, $newlname, $newemail, $newphone);
   //echo $query;
   $stmt->execute();
 }
-
-
-
-
-
-#then we create a function to pull out all comments
-#it goes in the database and pulls out all comments.
-
-function get_user(){
-
-@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
-
-$query = ("SELECT username FROM users");
-$stmt = $db->prepare($query);
-$stmt->bind_result($result);
-$stmt->execute();
-
-
-    while ($stmt->fetch()) {
-        echo $result;
-        echo "<hr/>";
-
-    }
-
-}
-
 
 #here we test if the POST has been submited
 #if yes, we call the function 'add_userinfo' which will add a new comment in the DB
@@ -94,8 +57,23 @@ if (isset($_POST['newuser']) && isset($_POST['newpassword']) && isset($_POST['fi
     add_userinfo();
 }
 
+#then we create a function to pull out all comments
+#it goes in the database and pulls out all comments.
 
+function get_user(){
 
+@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+
+$query = ("SELECT username FROM users");
+$stmt = $db->prepare($query);
+$stmt->bind_result($result);
+$stmt->execute();
+
+    while ($stmt->fetch()) {
+        echo $result;
+        echo "<hr/>";
+    }
+}
 
 #here we call all comments to be shown by simply calling the get_user function
 get_user();
@@ -115,9 +93,6 @@ if(username = username) {
 
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -132,7 +107,7 @@ if(username = username) {
     </header>
     <main>
       <br>
-      <form class="forms" action="" method="post">
+      <form class="forms" action="" method="POST">
         <a href="account.php"><img src="img/backiconwhite.png"></a>
         <br><br>
 
@@ -140,7 +115,7 @@ if(username = username) {
         <input type="text" name="newuser" placeholder="Username">
 
         <p>Select a secure password</p>
-        <input type="text" name="newpassword" placeholder="Password">
+        <input type="password" name="newpassword" placeholder="Password">
 
         <br><br><br>
 
