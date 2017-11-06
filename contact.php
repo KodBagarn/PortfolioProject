@@ -29,8 +29,8 @@
 
         <div id="contactright">
           <form class="forms" action="" method="POST">
-            <input type="text" name="fullname" placeholder="full name">
-            <input type="email" name="email" placeholder="e-mail">
+            <input type="text" name="fullname" placeholder="Full name">
+            <input type="email" name="email" placeholder="E-mail">
             <br><br>
             <textarea name="name" rows="6" cols="60"></textarea>
             <br>
