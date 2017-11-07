@@ -51,11 +51,21 @@ function add_userinfo(){
   $stmt->execute();
 }
 
-#here we test if the POST has been submited
-#if yes, we call the function 'add_userinfo' which will add a new comment in the DB
-if (isset($_POST['newuser']) && isset($_POST['newpassword']) && isset($_POST['firstname'])&& isset($_POST['lastname'])&& isset($_POST['email'])&& isset($_POST['phone'])){
-    add_userinfo();
+
+if (isset($_POST['newuser'])) {
+  $testnewuser = mysqli_real_escape_string($db, $_POST['newuser']);
+  $testnewpassword = sha1($_POST['newpassword']);
+  #here we test if the POST has been submited
+  #if yes, we call the function 'add_userinfo' which will add a new comment in the DB
+  $stmt = $db->prepare("SELECT * FROM users WHERE username='$testnewuser' ");
+  $stmt->execute();
+  $stmt->store_result();
+
+  #here we create a new variable 'totalcount' just to check if there's at least
+  #one user with the right combination. If there is, we later on print out "access granted"
+  $totalcount = $stmt->num_rows();
 }
+
 
 #then we create a function to pull out all comments
 #it goes in the database and pulls out all comments.
@@ -81,15 +91,9 @@ get_user();
 #you can also store this in a variable and use later
 # $allcomment = get_user();
 
-/*
-if(username = username) {
-  echo "username already taken";
-} elseif (password = password){
-  echo "password already taken";
-}if else{
-  $query =("INSERT INTO users VALUES ('{$user}') ")
-};
-*/
+
+
+
 
 ?>
 
@@ -133,7 +137,14 @@ if(username = username) {
 
         <input class= "formsubmit" type="submit" name="register" value="Register">
       </form>
-
+      <?php
+              if ($totalcount != 0) {
+                  echo '<h2>Username already taken!</h2>';
+              } else if (isset($_POST['newuser']) && isset($_POST['newpassword']) && isset($_POST['firstname'])&& isset($_POST['lastname'])&& isset($_POST['email'])&& isset($_POST['phone'])){
+                add_userinfo();
+                echo '<h2>Thanks for registering and Welcome to the Colony!</h2>';
+              }
+      ?>
     </main>
     <?php
     include("footer.php");
