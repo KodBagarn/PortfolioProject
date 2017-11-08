@@ -122,12 +122,15 @@ if (isset($_POST['newuser'])) {
         <input class= "formsubmit" type="submit" name="register" value="Register">
       </form>
       <?php
-              if ($totalcount1 != 0) {
-                  echo '<h2>Username already taken!</h2>';
-              } else if (isset($_POST['newuser']) && isset($_POST['newpassword']) && isset($_POST['firstname'])&& isset($_POST['lastname'])&& isset($_POST['email'])&& isset($_POST['phone'])){
-                add_userinfo();
-                echo '<h2>Thanks for registering and Welcome to the Colony!</h2>';
-              }
+          if (isset($_POST['newuser'])) {
+            if ($totalcount1 != 0 ) {
+                echo '<h2>Username already taken!</h2>';
+            } else if (isset($_POST['newuser']) && isset($_POST['newpassword']) && isset($_POST['firstname'])&& isset($_POST['lastname'])&& isset($_POST['email'])&& isset($_POST['phone'])){
+              add_userinfo();
+              echo '<h2>Thanks for registering and Welcome to the Colony!</h2>';
+            }
+          }
+
       ?>
     </main>
     <?php

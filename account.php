@@ -111,8 +111,13 @@ if(isset($_POST['username'], $_POST['password'])) {
       		} elseif($totalcount != 0) {
               $_SESSION['username'] = $inputusername;
               echo "<h3 id=\"welcometext\">Welcome $inputusername!</h3>";
+
       		}
  				}
+      if (!isset($_SESSION['username'])) {
+
+
+
 
   			?>
 
@@ -123,7 +128,9 @@ if(isset($_POST['username'], $_POST['password'])) {
         <br>
         <a href="register.php">Don't have an account? Click me!</a>
       </form>
-<?php // visa log in form om inte inloggad, ta bort när inloggad, file upload, form för namn, tags och beskrivning av bilden, val att göra portfolion public eller secret. kunna uppdatera bilder och ta bort dem ?>
+<?php }
+
+} // visa log in form om inte inloggad, ta bort när inloggad, file upload, form för namn, tags och beskrivning av bilden, val att göra portfolion public eller secret. kunna uppdatera bilder och ta bort dem ?>
 
     </main>
     <?php
