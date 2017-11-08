@@ -115,26 +115,27 @@ get_user();
         <a href="account.php"><img src="img/backiconwhite.png"></a>
         <br><br>
 
-        <p id="usernamep">Select a username</p>
+        <p id="usernamep">Select a username *</p>
         <input type="text" name="newuser" placeholder="Username">
 
-        <p>Select a secure password</p>
+        <p>Select a secure password *</p>
         <input type="password" name="newpassword" placeholder="Password">
 
         <br><br><br>
 
-        <p>First Name</p>
+        <p>First Name *</p>
         <input type="text" name="firstname" placeholder="First Name">
 
-        <p>Last Name</p>
+        <p>Last Name *</p>
         <input type="text" name="lastname" placeholder="Last Name">
 
-        <p>Email</p>
+        <p>Email *</p>
         <input type="email" name="email" placeholder="Email">
 
         <p>Phone Number</p>
         <input type="text" name="phone" placeholder="Phone Number">
 
+        <p id="mustfill">* Must be filled in</p>
         <input class= "formsubmit" type="submit" name="register" value="Register">
       </form>
       <?php

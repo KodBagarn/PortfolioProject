@@ -132,7 +132,7 @@ if (isset($_POST['username'], $_POST['password'])) {
 
       <form class="forms" action="" method="post">
         <input type="text" name="username" placeholder="username">
-        <input type="text" name="password" placeholder="password">
+        <input type="password" name="password" placeholder="password">
         <input class="formsubmit" type="submit" name="login" value="Log in">
         <br>
         <a href="register.php">Don't have an account? Click me!</a>

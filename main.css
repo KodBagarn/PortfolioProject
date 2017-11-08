@@ -233,6 +233,12 @@ color: #ffffff;
   color: #ffffff;
 }
 
+.forms > #mustfill{
+  float: right;
+  color: #ffffff;
+  font-size: 12px;
+}
+
 
 /*      Contact     */
 
