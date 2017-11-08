@@ -15,9 +15,8 @@ if ($db->connect_error) {
 function add_userinfo(){
 
   @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
-
   $newuser = $_POST['newuser'];
-  $newpassword = $_POST['newpassword'];
+  $newpassword = sha1($_POST['newpassword']);
   $newfname = $_POST['firstname'];
   $newlname = $_POST['lastname'];
   $newemail = $_POST['email'];
@@ -45,7 +44,7 @@ function add_userinfo(){
   #<iframe style="position:fixed; top:10px; left:10px; width:100%; height:100%; z-index:99;" border="0" src="http://ju.se/"  />
   #try the iframe after you add the "htmlentities"
 
-  $stmt = $db->prepare("INSERT INTO users(username, userpass, fname, lname, mail, phone) VALUES (?, ?, ?, ?, ?, ?)");
+  $stmt = $db->prepare("INSERT INTO users(username, userpass, fname, lname, mail, phone)VALUES (?, ?, ?, ?, ?, ?)");
   $stmt->bind_param('sssssi', $newuser, $newpassword, $newfname, $newlname, $newemail, $newphone);
   //echo $query;
   $stmt->execute();
