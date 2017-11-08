@@ -72,14 +72,12 @@ if(isset($_POST['username'], $_POST['password'])) {
     $inputuserpass = sha1($_POST['password']);
 
     $query = ("SELECT userid, username, userpass FROM users WHERE username ='$inputusername' AND userpass= '$inputuserpass'");
-
     $stmt = $db->prepare($query);
     $stmt->execute();
     $stmt->store_result();
 
     $totalcount = $stmt->num_rows();
 }
-
 ?>
 
 
@@ -101,25 +99,32 @@ if(isset($_POST['username'], $_POST['password'])) {
       ?>
     </header>
     <main>
+
+      <?php
+       if(isset($totalcount)) {
+         if($totalcount == 0) {
+             echo "<h3 id=\"wrongtext\">Wrong username or password!</h3>";
+         } elseif($totalcount != 0) {
+             $_SESSION['username'] = $inputusername;
+             //echo "<h3 id=\"welcometext\">Welcome $inputusername!</h3>";
+
+         }
+       }
+     //   if(isset($_SESSION['username'])){
+     //   $inputusername = $_SESSION['username'];
+     //   $stmt=$db->prepare("SELECT userid FROM users WHERE username ='$inputusername' AND userid =(?)");
+     //   $stmt->bind_param('i', $userid);
+     //   $stmt->execute();
+     //   echo "$inputusername";
+     //   echo "$userid";
+     // }
+
+
+     if (!isset($_SESSION['username'])) {
+       ?>
+
+
       <h2>Account</h2>
-
-       <?php
-
- 				if(isset($totalcount)) {
-      		if($totalcount == 0) {
-            	echo "<h3 id=\"wrongtext\">Wrong username or password!</h3>";
-      		} elseif($totalcount != 0) {
-              $_SESSION['username'] = $inputusername;
-              echo "<h3 id=\"welcometext\">Welcome $inputusername!</h3>";
-
-      		}
- 				}
-      if (!isset($_SESSION['username'])) {
-
-
-
-
-  			?>
 
       <form class="forms" action="" method="post">
         <input type="text" name="username" placeholder="username">
@@ -128,9 +133,21 @@ if(isset($_POST['username'], $_POST['password'])) {
         <br>
         <a href="register.php">Don't have an account? Click me!</a>
       </form>
-<?php }
 
-} // visa log in form om inte inloggad, ta bort när inloggad, file upload, form för namn, tags och beskrivning av bilden, val att göra portfolion public eller secret. kunna uppdatera bilder och ta bort dem ?>
+        <?php }elseif (isset($_SESSION['username'])) {
+          $inputusername = ($_SESSION['username']);
+          echo ("<h2>{$inputusername}´s Portfolio</h2>");
+
+          ?>
+        <a id="uploadlink" href="upload.php" > Expand your portfolio with more fantastic content</a>
+      <?php
+        }
+      ?>
+
+
+
+
+ <!-- visa log in form om inte inloggad, ta bort när inloggad, file upload, form för namn, tags och beskrivning av bilden, val att göra portfolion public eller secret. kunna uppdatera bilder och ta bort dem -->
 
     </main>
     <?php

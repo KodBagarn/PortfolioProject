@@ -225,6 +225,22 @@ font-weight: 700;
 color: #ffffff;
 }
 
+body > main > #uploadlink{
+  text-decoration: none;
+  background-color: #f79c00;
+  color: #ffffff;
+  padding: 5px 8px 5px 8px;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 5px;
+
+}
+
+body > main > #uploadlink:hover{
+  background-color: #d88800;
+
+}
+
 /*      Register    */
 
 .forms > p{
@@ -244,6 +260,7 @@ color: #ffffff;
 
 h2 {
   margin-top: 0;
+  margin-bottom: 50px;
   padding-top: 0%;
   padding-bottom: 2px;
   border-bottom: solid #000 1.5px;
