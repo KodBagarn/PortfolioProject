@@ -1,6 +1,6 @@
 <?php
 #check if we're connected to the database
-@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -14,7 +14,7 @@ if ($db->connect_error) {
 #basically it inserts a comment in a database.
 function add_userinfo(){
 
-  @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+  @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
   $newuser = $_POST['newuser'];
   $newpassword = sha1($_POST['newpassword']);
   $newfname = $_POST['firstname'];

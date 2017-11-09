@@ -14,7 +14,7 @@ main {
   width: 95%;
   background-color: #fff;
   margin: 0 auto;
-  padding: 4%;
+  padding: 10%;
   padding-top: 0;
   box-sizing: border-box;
 }
@@ -34,9 +34,12 @@ header {
 }
 
 #headerimg {
-  width: 100%;
-  position: relative;
-  height: auto;
+  width: 30%;
+  max-width: 160px;
+  padding-top: 30px;
+  padding-left: 10%;
+  padding-bottom: 4%;
+  float: left;
 }
 
 h1 {
@@ -49,11 +52,9 @@ h1 {
   padding-top: 1%;
   padding-bottom: 1%;
   text-align: right;
-  position: absolute;
-  width: 95%;
-  z-index: +1;
+  width: 100%;
   min-width: 304px;
-
+  margin-bottom: 20px;
 }
 
 #logindiv > #login{
@@ -83,6 +84,8 @@ h1 {
 
 #topnav{
   display: none;
+  margin-right: 10%;
+  margin-top: 40px;
 }
 
 #topnav.open{
@@ -109,7 +112,7 @@ h1 {
   font-size: 18px;
   margin: 1.5%;
   padding: 0.5%;
-  float: left;
+  float: right;
 }
 
 #topnav > ul > li > a:hover {
@@ -264,6 +267,7 @@ h2 {
 
 #contactright > form {
   max-width: 380px;
+  margin-right: 0px;
 }
 
 .forms {
@@ -379,7 +383,6 @@ h4{
 footer {
   background-color: #efefef;
   margin: 0 auto;
-  padding-left: 8%;
   width: 95%;
   max-height: 153px;
   box-sizing: border-box;
@@ -387,6 +390,7 @@ footer {
   padding-top: 6%;
   padding-bottom: 5%;
   overflow: hidden;
+  text-align: center;
 }
 
 footer > p > a:hover {
@@ -412,6 +416,128 @@ footer > #logofooter{
   max-width: 140px;
 }
 
+/*      Upload     */
+
+#uploadmain, #uploadbody {
+  background-color: #f79c00;
+}
+
+#uploadform > #addTagSubmit:focus, #uploadform > #uploadbutton:focus, #uploadform > #uploadsubmit:focus{
+  outline: none;
+}
+
+#uploadform {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 100px;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: #fff;
+  text-align: center;
+}
+
+#uploadform > #descriptionfield {
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  margin-top: 8px;
+  padding-top: 8px;
+  padding-left: 8px;
+  font-size: 12px;
+  width: 100%;
+
+}
+
+#uploadform > p{
+  margin-bottom: 0px;
+  float: left;
+  color: #ffffff;
+}
+
+#taginput {
+  text-transform: lowercase;
+}
+
+#uploadform > #uploadtitle {
+  width: 100%;
+  border: 1px solid #ddd;
+  padding: 8px 0;
+  padding-left: 8px;
+  font-size: 12px;
+  margin-top: 8px;
+  box-sizing: border-box;
+}
+
+#addTagSubmit {
+  width: 60px;
+  height: 30px;
+  display: block;
+  margin: 0 auto;
+  color: #f79c00;
+  font-size: 14px;
+  background-color: #fff;
+  float: right;
+  border: none;
+  margin-right: 5%;
+  cursor: pointer;
+}
+
+#addTagSubmit:hover, #uploadsubmit:hover {
+  opacity: 0.8;
+}
+
+#uploadsubmit {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 25px;
+  border-radius: 50px;
+  border: none;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 0;
+  background-color: #f79c00;
+  width: 85px;
+  height: 35px;
+  margin: 0 auto;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+#uploadbutton {
+  float: left;
+  font-size: 12px;
+  border: none;
+  margin-top: 0px;
+}
+
+#descriptionfield::placeholder, #uploadtitle::placeholder {
+  color: #bababa;
+}
+
+#uploadform > #optionalp {
+  font-size: 14px;
+  margin-bottom: 5px;
+  margin-top: -10px;
+}
+
+#uploadform > p {
+  color: #000;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+select {
+  width: 100%;
+  height: 30px;
+  text-transform: lowercase;
+  border: 1px solid #ddd;
+  min-width: 234.41px;
+  color: #8e8e8e;
+}
+
 /*      Media     */
 
 @media (min-width: 640px){
@@ -424,6 +550,34 @@ footer > #logofooter{
     display: block;
     margin-left: 2.5%;
   }
+
+  #exploreh2 {
+    margin-top: 40px;
+  }
+
+  #uploadform > p {
+    font-size: 18px;
+  }
+
+  #uploadbutton {
+    margin-top: 12px;
+  }
+
+  #uploadform > #uploadsubmit {
+    width: 90px;
+    height: 40px;
+    margin: 0 auto;
+    font-size: 17px;
+    text-align: center;
+    margin-top: 35px;
+  }
+
+  #uploadform > #optionalp {
+    margin: 0px;
+    margin-bottom: 12px;
+    margin-top: -10px;
+  }
+
 
   footer > a > img {
     width: 35px;
@@ -454,3 +608,14 @@ footer > #logofooter{
     640 tablet
     960 full screen
 */
+
+
+
+/*
+<select name="addtags[]">
+  <?php
+    while ($stmt->fetch()) {
+      echo "<option value='""'>".$tag."</option>";
+    }
+   ?>
+</select>*/

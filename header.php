@@ -15,23 +15,23 @@
         <a id="login" href="account.php">Log in</a>
     </div>
 
-    <img id="headerimg" src="img/phpprojectheadersmall.jpg">
+    <img id="headerimg" src="img/logo.png">
 
     <a id="hamburger" class="open" href="#"><img src="img/hamburger.png"></a>
 
     <nav id="topnav" class ="close">
       <ul>
         <li>
-          <a class="<?php echo ($current_page == 'index.php' || $current_page == '') ? 'active' : NULL ?>" href="index.php">Home</a>
-        </li>
-        <li>
-          <a class="<?php echo ($current_page == 'account.php') ? 'active' : NULL ?>" href="account.php">Account</a>
+          <a class="<?php echo ($current_page == 'contact.php') ? 'active' : NULL ?>" href="contact.php">Contact</a>
         </li>
         <li>
           <a class="<?php echo ($current_page == 'aboutus.php') ? 'active' : NULL ?>" href="aboutus.php">About us</a>
         </li>
         <li>
-          <a class="<?php echo ($current_page == 'contact.php') ? 'active' : NULL ?>" href="contact.php">Contact</a>
+          <a class="<?php echo ($current_page == 'account.php') ? 'active' : NULL ?>" href="account.php">Account</a>
+        </li>
+        <li>
+          <a class="<?php echo ($current_page == 'index.php' || $current_page == '') ? 'active' : NULL ?>" href="index.php">Home</a>
         </li>
       </ul>
     </nav>
