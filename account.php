@@ -1,6 +1,6 @@
 <?php
 
-@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -13,7 +13,7 @@ if ($db->connect_error) {
 
 function add_comment($comment) {
 
-	@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+	@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 	#here we add the html entities and string escaping
 	$comment= htmlentities($comment);
@@ -65,7 +65,7 @@ if (isset($_POST['password'])) {
 
 <?php
 
-@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 if(isset($_POST['username'], $_POST['password'])) {
     $inputusername = htmlentities($_POST['username']);
@@ -137,7 +137,7 @@ if(isset($_POST['username'], $_POST['password'])) {
         <?php }elseif (isset($_SESSION['username'])) {
           $inputusername = ($_SESSION['username']);
           echo ("<h2>{$inputusername}´s Portfolio</h2>");
-
+          
           ?>
         <a id="uploadlink" href="upload.php" > Expand your portfolio with more fantastic content</a>
       <?php

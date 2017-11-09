@@ -12,7 +12,11 @@
   <body>
 
     <div id="logindiv">
-        <a id="login" href="account.php">Log in</a>
+      <?php if(!isset($_SESSION['username'])){ ?>
+        <a class="login" href="account.php">Log in</a>
+      <?php }elseif(isset($_SESSION['username'])){ ?>
+        <a class="login" href="logout.php">Log out</a>
+        <?php } ?>
     </div>
 
     <img id="headerimg" src="img/logo.png">

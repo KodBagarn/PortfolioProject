@@ -2,7 +2,7 @@
 
 //CHECK YOUR CONNECTION TO THE DATABASE
 
-@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -35,7 +35,7 @@ if(isset($_FILES['upload'])){
     }
 
 //ADD NEW TAGS
-@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -50,6 +50,7 @@ $stmt->bind_result($tagid, $tag);
 $stmt->execute();
 if (isset($_POST['addtag'])) {
 
+  @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 
 $newtag = $_POST['tag'];
@@ -104,7 +105,7 @@ header("location:upload.php");
                 echo "<option>" . $row["tag"].  "</option>";
               }
               $db->close();                                                               //Line 98-106 was to large parts adapted from this example https://www.w3schools.com/php/showphpfile.asp?filename=demo_db_select_oo_table
-              
+
           }
 
           ?>
