@@ -1,6 +1,6 @@
 <?php
 #check if we're connected to the database
-@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -14,7 +14,7 @@ if ($db->connect_error) {
 #basically it inserts a comment in a database.
 function add_userinfo(){
 
-  @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+  @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
   $newuser = $_POST['newuser'];
   $newpassword = sha1($_POST['newpassword']);
   $newfname = $_POST['firstname'];
@@ -99,21 +99,21 @@ if (isset($_POST['newuser'])) {
         <br><br>
 
         <p id="usernamep">Select a username *</p>
-        <input type="text" name="newuser" placeholder="Username">
+        <input required type="text" name="newuser" placeholder="Username">
 
         <p>Select a secure password *</p>
-        <input type="password" name="newpassword" placeholder="Password">
+        <input required type="password" name="newpassword" placeholder="Password">
 
         <br><br><br>
 
         <p>First Name *</p>
-        <input type="text" name="firstname" placeholder="First Name">
+        <input required type="text" name="firstname" placeholder="First Name">
 
         <p>Last Name *</p>
-        <input type="text" name="lastname" placeholder="Last Name">
+        <input required type="text" name="lastname" placeholder="Last Name">
 
         <p>Email *</p>
-        <input type="email" name="email" placeholder="Email">
+        <input required type="email" name="email" placeholder="Email">
 
         <p>Phone Number</p>
         <input type="text" name="phone" placeholder="Phone Number">

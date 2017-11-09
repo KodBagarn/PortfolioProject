@@ -2,7 +2,7 @@
 
 //CHECK YOUR CONNECTION TO THE DATABASE
 
-@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -44,7 +44,7 @@ $stmt->execute();
 
 if (isset($_POST['addtag'])) {
 
-  @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+  @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
   if ($db->connect_error) {
       echo "could not connect: " . $db->connect_error;
