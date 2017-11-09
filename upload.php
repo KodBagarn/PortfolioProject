@@ -35,22 +35,22 @@ if(isset($_FILES['upload'])){
     }
 
 //ADD NEW TAGS
+@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+
+if ($db->connect_error) {
+    echo "could not connect: " . $db->connect_error;
+    printf("<br><a href=index.php>Return to home page </a>");
+    exit();
+}
 
 $gettags = "SELECT * FROM tags";
 
 $stmt = $db->prepare($gettags);
 $stmt->bind_result($tagid, $tag);
 $stmt->execute();
-
 if (isset($_POST['addtag'])) {
 
-  @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
-  if ($db->connect_error) {
-      echo "could not connect: " . $db->connect_error;
-      printf("<br><a href=index.php>Return to home page </a>");
-      exit();
-  }
 
 $newtag = $_POST['tag'];
 
@@ -90,12 +90,25 @@ header("location:upload.php");
         <br><br>
         <p id="optionalp">(optional)</p>
         <br>
-        <select name="tag">
-          <option>Nature</option>
-          <option>Ocean</option>
-          <option>Family</option>
-          <option>Fireworks</option>
-          <option>Chocolate</option>
+
+
+          <?php
+          @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+
+          $displaytagsquery ="SELECT tag FROM tags";
+          $result = $db->query($displaytagsquery);
+
+          if ($result->num_rows > 0) { ?>
+            <select name="tag">
+              <?php while ($row = $result->fetch_assoc()) {
+                echo "<option>" . $row["tag"].  "</option>";
+              }
+              $db->close();                                                               //Line 98-106 was to large parts adapted from this example https://www.w3schools.com/php/showphpfile.asp?filename=demo_db_select_oo_table
+              
+          }
+
+          ?>
+
         </select>
 
         <br>
