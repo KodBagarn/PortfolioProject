@@ -1,3 +1,9 @@
+
+
+
+<!-- ACCOUNT.PHP SOM FUNGERAR MEN UTAN USERID -->
+
+
 <?php
 
 @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');

@@ -2,7 +2,7 @@
 
 //CHECK YOUR CONNECTION TO THE DATABASE
 
-@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -14,7 +14,7 @@ if ($db->connect_error) {
 
 if(isset($_FILES['upload'])){
 
-    $allowedextensions = array('jpeg', 'png', 'jpg');
+    $allowedextensions = array('jpeg', 'png', 'jpg', '');
     $extension = strtolower(substr($_FILES['upload']['name'], strpos($_FILES['upload']['name'], '.') +1));
 
     $error = array();
@@ -35,7 +35,7 @@ if(isset($_FILES['upload'])){
     }
 
 //ADD NEW TAGS
-@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -50,18 +50,19 @@ $stmt->bind_result($tagid, $tag);
 $stmt->execute();
 if (isset($_POST['addtag'])) {
 
-  @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+  @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
 
 $newtag = $_POST['tag'];
 
-$addtag = "INSERT INTO tags(tag) VALUES(?);";
 
-$stmt = $db->prepare($addtag);
-$stmt->bind_param('s', $newtag);
-$stmt->execute();
-
-header("location:upload.php");
+// $addtag = "INSERT INTO tags(tag) VALUES(?);";
+//
+// $stmt = $db->prepare($addtag);
+// $stmt->bind_param('s', $newtag);
+// $stmt->execute();
+//
+//header("location:upload.php");
 
 }
 
@@ -83,8 +84,8 @@ header("location:upload.php");
         <p>Upload an image</p>
         <br><br>
         <input id="uploadbutton" type="file" name="upload" value="">
-        <input id="uploadtitle" type="text" name="title" placeholder="Title">
-        <textarea id="descriptionfield" name="description" placeholder="Description" rows="4"></textarea>
+        <input required id="uploadtitle" type="text" name="title" placeholder="Title">
+        <textarea required id="descriptionfield" name="description" placeholder="Description" rows="4"></textarea>
 
         <br>
         <p id="choosetagsp">Choose one or several tags</p>
@@ -111,6 +112,7 @@ header("location:upload.php");
           ?>
 
         </select>
+        <?php echo "$newtag"; ?>
 
         <br>
         <input id="addTagSubmit" type="submit" name="addtag" value="﹢Add tag">
@@ -123,7 +125,7 @@ header("location:upload.php");
 
       if(isset($error)) {
           if(empty($error)) {
-              echo '<a id="uploadlinkone" href="uploadedfiles/'.$_FILES['upload']['name'].'">YOUR UPLOADED FILE'; //tagen från https://stackoverflow.com/questions/14182823/echo-image-with-php
+              echo '<a id="uploadlinkone" href="uploadedfiles/'.$_FILES['upload']['name'].'">YOUR UPLOADED FILE';
               echo "</br>";
               echo '<a id="uploadlinktwo" href="gallerypage.php">Go to your portfolio</a>';
           } else {
