@@ -4,7 +4,7 @@ session_start();
 
 //CHECK YOUR CONNECTION TO THE DATABASE
 
-@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -12,9 +12,11 @@ if ($db->connect_error) {
     exit();
 }
 
-//UPLOAD IMAGES
+//UPLOAD TO FOLDER
 
 if(isset($_FILES['upload'])){
+
+    @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
     $allowedextensions = array('jpeg', 'png', 'jpg');
     $extension = strtolower(substr($_FILES['upload']['name'], strpos($_FILES['upload']['name'], '.') +1));
@@ -38,41 +40,37 @@ if(isset($_FILES['upload'])){
     } else {
 
     }
-    }
 
-//ADD NEW TAGS
-@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+?>
 
-if ($db->connect_error) {
-    echo "could not connect: " . $db->connect_error;
-    printf("<br><a href=index.php>Return to home page </a>");
-    exit();
+<?php
+
+//UPLOAD TO DATABASE AND PORTFOLIO
+
+if (isset($_POST['upload'])) {
+  $uploadedimage = "uploadedfiles/{$newfilename}";
 }
 
-$gettags = "SELECT * FROM tags";
+if (isset($_POST['title'])) {
+  $uploadedtitle = $_POST['title'];
+}
 
-$stmt = $db->prepare($gettags);
-$stmt->bind_result($tagid, $tag);
+if (isset($_POST['description'])) {
+  $uploadeddescription = $_POST['description'];
+}
+
+if (isset($_SESSION['username'])) {
+  $userid = ($_SESSION['userid']);
+}
+
+$query = ("INSERT INTO images(title, description, link, userid) VALUES ('{$uploadedtitle}', '{$uploadeddescription}', '{$uploadedimage}', '{$userid}')");
+$stmt = $db->prepare($query);
 $stmt->execute();
-if (isset($_POST['addtag'])) {
-
-  @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
-
-
-$newtag = $_POST['tag'];
-
-
-// $addtag = "INSERT INTO tags(tag) VALUES(?);";
-//
-// $stmt = $db->prepare($addtag);
-// $stmt->bind_param('s', $newtag);
-// $stmt->execute();
-//
-//header("location:upload.php");
 
 }
 
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -85,7 +83,7 @@ $newtag = $_POST['tag'];
   <body id="uploadbody">
     <main id="uploadmain">
 
-      <form id="uploadform" action="" method="post" enctype="multipart/form-data">
+      <form id="uploadform" action="account.php" method="post" enctype="multipart/form-data">
 
         <p>Upload an image</p>
         <br><br>
@@ -98,27 +96,6 @@ $newtag = $_POST['tag'];
         <br><br>
         <p id="optionalp">(optional)</p>
         <br>
-
-
-          <?php
-          @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
-
-          $displaytagsquery ="SELECT tag FROM tags";
-          $result = $db->query($displaytagsquery);
-
-          if ($result->num_rows > 0) { ?>
-            <select id="tagselection" name="tag">
-              <?php while ($row = $result->fetch_assoc()) {
-                echo "<option>" . $row["tag"].  "</option>";
-              }
-              $db->close();                                                               //Line 98-106 was to large parts adapted from this example https://www.w3schools.com/php/showphpfile.asp?filename=demo_db_select_oo_table
-
-          }
-
-          ?>
-
-        </select>
-        <?php //echo "$newtag"; ?>
 
         <br>
         <button id="addTagSubmit" for="addtag" name="addtag" value="﹢Add tag">Add tag +</button>

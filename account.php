@@ -5,7 +5,7 @@
   include("header.php");
 
 
-@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -18,7 +18,7 @@ if ($db->connect_error) {
 
 function add_comment($comment) {
 
-	@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+	@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
 	#here we add the html entities and string escaping
 	$comment= htmlentities($comment);
@@ -76,7 +76,7 @@ if(isset($_POST['username'], $_POST['password'])) {
     $inputusername = stripslashes($_POST['username']);
     $inputuserpass = stripslashes($_POST['password']);
 
-    @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+    @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
     $query = ("SELECT userid, username, userpass FROM users WHERE username = ?");
     $stmt = $db->prepare($query);
@@ -105,7 +105,6 @@ if(isset($_POST['username'], $_POST['password'])) {
     }
 }
 
-    //$totalcount = $stmt->num_rows();
 }
 ?>
 
@@ -166,9 +165,27 @@ if(isset($_POST['username'], $_POST['password'])) {
         }
       ?>
 
+      <?php
 
+      @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
+      if (isset($_SESSION['username'])) {
+        $userid = ($_SESSION['userid']);
+      }
 
+      $stmt = $db->prepare("SELECT title, description, link FROM images WHERE userid = '{$userid}'");
+      $stmt->execute();
+      $stmt->bind_result($title, $description, $link);
+      $stmt->fetch();
+
+      $imagepackage = array($title, $description, $link);
+
+      ?>
+      <img class="portfolioimages" src="<?php echo $link; ?>" />
+      <h3><?php echo $title; ?></h3>
+      <p><?php echo $description; ?></p>
+
+<!-- above code developed from https://stackoverflow.com/questions/15735450/images-as-links-in-mysql-database -->
 
     </main>
     <?php
