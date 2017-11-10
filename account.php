@@ -158,7 +158,7 @@ if(isset($_POST['username'], $_POST['password'])) {
         <?php }elseif (isset($_SESSION['username'])) {
           $inputusername = ($_SESSION['username']);
           $userid = ($_SESSION['userid']);
-          echo ("<h2>{$inputusername}´s Portfolio with ID: {$userid}</h2>");
+          echo ("<h2>{$inputusername}´s Portfolio</h2>");
 
           ?>
         <a id="uploadlink" href="upload.php" > Expand your portfolio with more fantastic content</a>

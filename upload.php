@@ -16,7 +16,7 @@ if ($db->connect_error) {
 
 if(isset($_FILES['upload'])){
 
-    $allowedextensions = array('jpeg', 'png', 'jpg', '');
+    $allowedextensions = array('jpeg', 'png', 'jpg',);
     $extension = strtolower(substr($_FILES['upload']['name'], strpos($_FILES['upload']['name'], '.') +1));
 
     $error = array();
@@ -33,7 +33,7 @@ if(isset($_FILES['upload'])){
 
         $filename = $_FILES['upload']['name'];
 
-        $newfilename =$_SESSION['username']."_".$filename;
+        $newfilename =$_SESSION['userid']."_".$filename;
         move_uploaded_file($_FILES['upload']['tmp_name'], "uploadedfiles/{$newfilename}");
     } else {
 

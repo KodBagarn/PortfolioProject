@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
     <title>Creative Colony</title>
   </head>
-  <body>
+  <body id="headerbody">
 
     <div id="logindiv">
       <?php if(!isset($_SESSION['username'])){ ?>
