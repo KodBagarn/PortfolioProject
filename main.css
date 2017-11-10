@@ -234,7 +234,17 @@ font-weight: 700;
 color: #ffffff;
 }
 
-body > main > #uploadlink{
+.accountoptions{
+  border: solid 2px #ccc;
+  padding: 2%;
+  border-radius: 5px;
+}
+
+.accountoptions > h3{
+  margin-top: 0;
+}
+
+body > main > .accountoptions > .accountlinks{
   text-decoration: none;
   background-color: #f79c00;
   color: #ffffff;
@@ -242,10 +252,9 @@ body > main > #uploadlink{
   font-weight: 600;
   font-size: 18px;
   border-radius: 5px;
-
 }
 
-body > main > #uploadlink:hover{
+body > main > .accountoptions > .accountlinks:hover{
   background-color: #d88800;
 
 }

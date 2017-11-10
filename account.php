@@ -160,10 +160,18 @@ if(isset($_POST['username'], $_POST['password'])) {
           echo ("<h2>{$inputusername}´s Portfolio</h2>");
 
           ?>
-        <a id="uploadlink" href="upload.php" > Expand your portfolio with more fantastic content</a>
+          <div class="accountoptions">
+            <h3>Account Options</h3>
+            <a class="accountlinks" href="upload.php" > Expand your portfolio with more fantastic content</a>
+            <a class="accountlinks" href="description.php">Edit your Portfolios description</a>
+          </div>
+
+
+
       <?php
+
+
         }
-      ?>
 
       <?php
 
@@ -186,6 +194,10 @@ if(isset($_POST['username'], $_POST['password'])) {
       <p><?php echo $description; ?></p>
 
 <!-- above code developed from https://stackoverflow.com/questions/15735450/images-as-links-in-mysql-database -->
+
+      ?>
+
+
 
     </main>
     <?php
