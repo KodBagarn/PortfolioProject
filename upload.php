@@ -16,7 +16,7 @@ if ($db->connect_error) {
 
 if(isset($_FILES['upload'])){
 
-    $allowedextensions = array('jpeg', 'png', 'jpg',);
+    $allowedextensions = array('jpeg', 'png', 'jpg');
     $extension = strtolower(substr($_FILES['upload']['name'], strpos($_FILES['upload']['name'], '.') +1));
 
     $error = array();
