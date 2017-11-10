@@ -1,6 +1,11 @@
 <?php
 
-@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+
+  include"config.php";
+  include("header.php");
+
+
+@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -13,7 +18,7 @@ if ($db->connect_error) {
 
 function add_comment($comment) {
 
-	@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+	@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 	#here we add the html entities and string escaping
 	$comment= htmlentities($comment);
@@ -65,18 +70,42 @@ if (isset($_POST['password'])) {
 
 <?php
 
-@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+
 
 if(isset($_POST['username'], $_POST['password'])) {
-    $inputusername = htmlentities($_POST['username']);
-    $inputuserpass = sha1($_POST['password']);
+    $inputusername = stripslashes($_POST['username']);
+    $inputuserpass = stripslashes($_POST['password']);
 
-    $query = ("SELECT userid, username, userpass FROM users WHERE username ='$inputusername' AND userpass= '$inputuserpass'");
+    @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+
+    $query = ("SELECT userid, username, userpass FROM users WHERE username = ?");
     $stmt = $db->prepare($query);
+    $stmt->bind_param('s', $inputusername);
     $stmt->execute();
-    $stmt->store_result();
+    $stmt->bind_result($userid, $username, $userpass);
 
-    $totalcount = $stmt->num_rows();
+
+    //$stmt->store_result();
+
+    echo $userpass;
+
+    while($stmt->fetch()){
+
+    if($userpass == sha1($inputuserpass)) {
+      $_SESSION['username'] = $inputusername;
+       $_SESSION['userid'] = $userid;
+      header("refresh:0");
+      exit();
+
+
+    } else {
+      echo "<h3 id=\"wrongtext\">Wrong username or password!</h3>";
+        //echo "<h3 id=\"welcometext\">Welcome $inputusername!</h3>";
+
+    }
+}
+
+    //$totalcount = $stmt->num_rows();
 }
 ?>
 
@@ -85,9 +114,7 @@ if(isset($_POST['username'], $_POST['password'])) {
 
 <html>
   <head>
-    <?php
-      include"config.php";
-     ?>
+
     <link rel="stylesheet" href="main.css">
     <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
     <title>Creative Colony</title>
@@ -95,21 +122,15 @@ if(isset($_POST['username'], $_POST['password'])) {
   <body>
     <header>
       <?php
-        include("header.php");
+
       ?>
     </header>
     <main>
 
       <?php
-       if(isset($totalcount)) {
-         if($totalcount == 0) {
-             echo "<h3 id=\"wrongtext\">Wrong username or password!</h3>";
-         } elseif($totalcount != 0) {
-             $_SESSION['username'] = $inputusername;
-             //echo "<h3 id=\"welcometext\">Welcome $inputusername!</h3>";
 
-         }
-       }
+
+
      //   if(isset($_SESSION['username'])){
      //   $inputusername = $_SESSION['username'];
      //   $stmt=$db->prepare("SELECT userid FROM users WHERE username ='$inputusername' AND userid =(?)");
@@ -136,7 +157,8 @@ if(isset($_POST['username'], $_POST['password'])) {
 
         <?php }elseif (isset($_SESSION['username'])) {
           $inputusername = ($_SESSION['username']);
-          echo ("<h2>{$inputusername}´s Portfolio</h2>");
+          $userid = ($_SESSION['userid']);
+          echo ("<h2>{$inputusername}´s Portfolio with ID: {$userid}</h2>");
 
           ?>
         <a id="uploadlink" href="upload.php" > Expand your portfolio with more fantastic content</a>

@@ -1,8 +1,10 @@
 <?php
 
+session_start();
+
 //CHECK YOUR CONNECTION TO THE DATABASE
 
-@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -28,15 +30,18 @@ if(isset($_FILES['upload'])){
     }
 
     if(empty($error)) {
-        $filename = $_SESSION['username'].$_POST['title'];
-        move_uploaded_file($_FILES['upload']['tmp_name'], "uploadedfiles/{$_FILES['upload'][$filename]}");
+
+        $filename = $_FILES['upload']['name'];
+
+        $newfilename =$_SESSION['username']."_".$filename;
+        move_uploaded_file($_FILES['upload']['tmp_name'], "uploadedfiles/{$newfilename}");
     } else {
 
     }
     }
 
 //ADD NEW TAGS
-@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -51,7 +56,7 @@ $stmt->bind_result($tagid, $tag);
 $stmt->execute();
 if (isset($_POST['addtag'])) {
 
-  @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+  @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 
 $newtag = $_POST['tag'];
@@ -96,13 +101,13 @@ $newtag = $_POST['tag'];
 
 
           <?php
-          @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+          @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
           $displaytagsquery ="SELECT tag FROM tags";
           $result = $db->query($displaytagsquery);
 
           if ($result->num_rows > 0) { ?>
-            <select name="tag">
+            <select id="tagselection" name="tag">
               <?php while ($row = $result->fetch_assoc()) {
                 echo "<option>" . $row["tag"].  "</option>";
               }
@@ -113,10 +118,10 @@ $newtag = $_POST['tag'];
           ?>
 
         </select>
-        <?php echo "$newtag"; ?>
+        <?php //echo "$newtag"; ?>
 
         <br>
-        <input id="addTagSubmit" type="submit" name="addtag" value="﹢Add tag">
+        <button id="addTagSubmit" for="addtag" name="addtag" value="﹢Add tag">Add tag +</button>
         <br>
         <input id="uploadsubmit" type="submit" name="upload" value="Upload">
 
@@ -126,7 +131,7 @@ $newtag = $_POST['tag'];
 
       if(isset($error)) {
           if(empty($error)) {
-              echo '<a id="uploadlinkone" href="uploadedfiles/'.$_FILES['upload']['name'].'">YOUR UPLOADED FILE';
+              echo '<a id="uploadlinkone" href="uploadedfiles/'.$newfilename.'">YOUR UPLOADED FILE';
               echo "</br>";
               echo '<a id="uploadlinktwo" href="gallerypage.php">Go to your portfolio</a>';
           } else {
