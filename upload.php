@@ -28,7 +28,8 @@ if(isset($_FILES['upload'])){
     }
 
     if(empty($error)) {
-        move_uploaded_file($_FILES['upload']['tmp_name'], "uploadedfiles/{$_FILES['upload']['name']}");
+        $filename = $_SESSION['username'].$_POST['title'];
+        move_uploaded_file($_FILES['upload']['tmp_name'], "uploadedfiles/{$_FILES['upload'][$filename]}");
     } else {
 
     }

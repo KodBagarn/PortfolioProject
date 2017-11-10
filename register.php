@@ -128,6 +128,7 @@ if (isset($_POST['newuser'])) {
             } else if (isset($_POST['newuser']) && isset($_POST['newpassword']) && isset($_POST['firstname'])&& isset($_POST['lastname'])&& isset($_POST['email'])&& isset($_POST['phone'])){
               add_userinfo();
               echo '<h2>Thanks for registering and Welcome to the Colony!</h2>';
+              die("<script>location.href = 'http://localhost/portfolioProject/portfolioProject/account.php'</script>");
             }
           }
 

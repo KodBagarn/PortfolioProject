@@ -16,8 +16,6 @@ session_destroy();
     <main>
       <h2>Thanks for your visit, See you soon!</h2>
     </main>
-    <footer>
       <?php include('footer.php'); ?>
-    </footer>
   </body>
 </html>

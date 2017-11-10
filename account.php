@@ -137,7 +137,7 @@ if(isset($_POST['username'], $_POST['password'])) {
         <?php }elseif (isset($_SESSION['username'])) {
           $inputusername = ($_SESSION['username']);
           echo ("<h2>{$inputusername}´s Portfolio</h2>");
-          
+
           ?>
         <a id="uploadlink" href="upload.php" > Expand your portfolio with more fantastic content</a>
       <?php
@@ -147,7 +147,6 @@ if(isset($_POST['username'], $_POST['password'])) {
 
 
 
- <!-- visa log in form om inte inloggad, ta bort när inloggad, file upload, form för namn, tags och beskrivning av bilden, val att göra portfolion public eller secret. kunna uppdatera bilder och ta bort dem -->
 
     </main>
     <?php
