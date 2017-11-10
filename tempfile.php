@@ -1,3 +1,9 @@
+
+
+
+<!-- ACCOUNT.PHP SOM FUNGERAR MEN UTAN USERID -->
+
+
 <?php
 
 @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
@@ -147,6 +153,7 @@ if(isset($_POST['username'], $_POST['password'])) {
 
 
 
+ <!-- visa log in form om inte inloggad, ta bort när inloggad, file upload, form för namn, tags och beskrivning av bilden, val att göra portfolion public eller secret. kunna uppdatera bilder och ta bort dem -->
 
     </main>
     <?php
