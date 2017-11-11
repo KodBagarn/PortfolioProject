@@ -167,6 +167,19 @@ if(isset($_POST['username'], $_POST['password'])) {
             <a class="accountlinks" href="description.php">Edit your Portfolios description</a>
           </div>
 
+          <div class="accountoptions">
+            <h3><strong>Portfolio Information</strong></h3>
+            <h3>Creator: <?php echo "$inputusername"; ?></h3>
+            <h3>Description: <?php
+            $userid = ($_SESSION['userid']);
+            $stmt = $db->prepare("SELECT description, userid FROM portfolio WHERE userid = ?");
+            $stmt->bind_param('i', $userid);
+            $stmt->execute();
+            $stmt->bind_result($description, $userid);
+
+            echo "$description"; ?></h3>
+          </div>
+
 
 
       <?php
