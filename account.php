@@ -164,38 +164,29 @@ if(isset($_POST['username'], $_POST['password'])) {
             <h3>Account Options</h3>
             <a class="accountlinks" href="upload.php" > Expand your portfolio with more fantastic content</a>
             <a class="accountlinks" href="description.php">Edit your Portfolios description</a>
-          </div>
 
+          <?php
+            }
 
+          @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
-      <?php
+          if (isset($_SESSION['username'])) {
+            $userid = ($_SESSION['userid']);
+          }
 
+          $stmt = $db->prepare("SELECT title, description, link FROM images WHERE userid = '{$userid}'");
+          $stmt->execute();
+          $stmt->bind_result($title, $description, $link);
+          $stmt->fetch();
 
-        }
-
-      <?php
-
-      @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
-
-      if (isset($_SESSION['username'])) {
-        $userid = ($_SESSION['userid']);
-      }
-
-      $stmt = $db->prepare("SELECT title, description, link FROM images WHERE userid = '{$userid}'");
-      $stmt->execute();
-      $stmt->bind_result($title, $description, $link);
-      $stmt->fetch();
-
-      $imagepackage = array($title, $description, $link);
-
-      ?>
-      <img class="portfolioimages" src="<?php echo $link; ?>" />
-      <h3><?php echo $title; ?></h3>
-      <p><?php echo $description; ?></p>
-
+          ?>
+          <br><br>
+          <img class="portfolioimages" src="<?php echo $link; ?>" />
+          <h3 class="imagetitle"><?php echo $title; ?></h3>
+          <p class="imagedescription"><?php echo $description; ?></p>
+        </div>
 <!-- above code developed from https://stackoverflow.com/questions/15735450/images-as-links-in-mysql-database -->
 
-      ?>
 
 
 

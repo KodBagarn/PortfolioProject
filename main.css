@@ -238,6 +238,7 @@ color: #ffffff;
   border: solid 2px #ccc;
   padding: 2%;
   border-radius: 5px;
+  padding-bottom: 40px;
 }
 
 .accountoptions > h3{
@@ -261,6 +262,17 @@ body > main > .accountoptions > .accountlinks:hover{
 
 .portfolioimages{
   width: 200px;
+}
+
+.imagetitle {
+  margin: 0px;
+  font-size: 14px;
+  color: #99958f;
+}
+
+.imagedescription {
+  margin: 0px;
+  font-size: 12px;
 }
 
 /*      Register    */
