@@ -5,7 +5,7 @@
   include("header.php");
 
 
-@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -18,7 +18,7 @@ if ($db->connect_error) {
 
 function add_comment($comment) {
 
-	@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+	@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 	#here we add the html entities and string escaping
 	$comment= htmlentities($comment);
@@ -76,7 +76,7 @@ if(isset($_POST['username'], $_POST['password'])) {
     $inputusername = stripslashes($_POST['username']);
     $inputuserpass = stripslashes($_POST['password']);
 
-    @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+    @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
     $query = ("SELECT userid, username, userpass FROM users WHERE username = ?");
     $stmt = $db->prepare($query);
@@ -167,25 +167,83 @@ if(isset($_POST['username'], $_POST['password'])) {
 
           <div class="accountoptions">
             <h3><strong>Portfolio Information</strong></h3>
-            <h3>Creator: <?php echo "$inputusername"; ?></h3>
-            <h3>Description: <?php
-            $userid = ($_SESSION['userid']);
-            $stmt = $db->prepare("SELECT description, userid FROM portfolio WHERE userid = ?");
-            $stmt->bind_param('i', $userid);
-            $stmt->execute();
-            $stmt->bind_result($description, $userid);
+            <h4>Creator: <?php echo "$inputusername"; ?></h4>
+            <h4>Description: <?php
 
-            echo "$description"; ?></h3>
+            @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+
+            $userid = ($_SESSION['userid']);
+
+            $statement = $db->prepare("SELECT description FROM portfolio WHERE userid = '{$userid}'");
+            $statement->execute();
+            $statement->store_result();
+
+            $totalcount = $statement->num_rows();
+
+
+
+            $title = $inputusername."s Portfolio";
+            $description = 'Please insert a brief description about you Portfolio!';
+
+
+
+            if ($totalcount == 0) {
+              $query = ("INSERT INTO portfolio(title, description, userid) VALUES ('{$title}', '{$description}', ?)");
+              $stmt = $db->prepare($query);
+              $stmt->bind_param('i', $userid);
+              $stmt->execute();
+              echo "$description";
+
+            } elseif($totalcount != 0){
+              $userid = ($_SESSION['userid']);
+              $query = "SELECT description FROM portfolio WHERE userid = '{$userid}'";
+              $statement = $db->prepare($query);
+              $statement->bind_result($userdescription);
+              $statement->execute();
+              while ($statement->fetch()) {
+                echo "$userdescription";
+              }
+            }
+
+
+
+            // $query =("UPDATE portfolio SET title = '{$title}', description = '{$description}' WHERE userid = '{$userid}')");
+            // $stmt = $db->prepare($query);
+            // $stmt->execute();
+
+
+
+              // $query = ("SELECT description, title FROM portfolio WHERE userid = '{$userid}'");
+              // $stmt = $db->prepare($query);
+              // $stmt->bind_result($description, $title);
+              // $stmt->execute();
+              //
+              //
+              //
+              // while ($stmt->fetch()) {
+                ?>
+                </h4>
+<?php
+              }
+ ?>
+
+
           </div>
 
           <?php
-          }
 
-          @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+
+          @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
           if (isset($_SESSION['username'])) {
             $userid = ($_SESSION['userid']);
-          }
+            $stmt = $db->prepare("SELECT title, description, link FROM images WHERE userid = '{$userid}'");
+            $stmt->execute();
+            $stmt->bind_result($title, $description, $link);
+            $stmt->fetch();
+
+            ?>
+
 
           $stmt = $db->prepare("SELECT title, description, link FROM images WHERE userid = '{$userid}'");
           $stmt->execute();
@@ -195,8 +253,9 @@ if(isset($_POST['username'], $_POST['password'])) {
             <img class="portfolioimages" src="<?php echo $link; ?>" />
             <h3 class="imagetitle"><?php echo $title; ?></h3>
             <p class="imagedescription"><?php echo $description; ?></p>
-        <?php  }
 
+            <?php
+          }
           ?>
 
         </div>

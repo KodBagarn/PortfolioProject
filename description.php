@@ -16,18 +16,17 @@ if ($db->connect_error) {
 
 if(isset($_POST['description'])){
 
-  if (isset($_SESSION['username'])) {
-    $userid = ($_SESSION['userid']);
-  }
-  $inputusername = ($_SESSION['username']);
-  $title = $inputusername."s Portfolio";
-  $description = $_POST['description'];
+$userdescription = $_POST['description'];
+$userid = $_SESSION['userid'];
 
+$stmt = $db->prepare("UPDATE portfolio SET description = '{$userdescription}' WHERE userid = '{$userid}'; ");
+$stmt->execute();
 
+header("location:account.php");
+//$stmt->bind_result();
 
-  $query =("INSERT INTO portfolio(title, description, userid) VALUES ('{$title}', '{$description}', '{$userid}')");
-  $stmt = $db->prepare($query);
-  $stmt->execute();
+//$pdescription = $_SESSION['description'];
+
 }
 
 ?>
@@ -56,7 +55,7 @@ if(isset($_POST['description'])){
 
 
 
-      <form id="uploadform" action="account.php" method="post">
+      <form id="uploadform" action="" method="post">
 
         <p>Write a short description about the contents of your portfolio!</p>
         <br>
