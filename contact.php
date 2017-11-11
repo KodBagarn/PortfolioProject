@@ -1,6 +1,6 @@
 <?php
 
-@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -13,7 +13,7 @@ if ($db->connect_error) {
 
 function add_comment($comment) {
 
-	@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+	@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
 	#here we add the html entities and string escaping
 	$comment= htmlentities($comment);
@@ -33,7 +33,7 @@ function add_comment($comment) {
 
 function get_comment() {
 
-	@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+	@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
 	$query = ("SELECT comment FROM comments");
 	$stmt = $db->prepare($query);

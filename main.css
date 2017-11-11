@@ -259,6 +259,10 @@ body > main > .accountoptions > .accountlinks:hover{
 
 }
 
+.portfolioimages{
+  width: 200px;
+}
+
 /*      Register    */
 
 .forms > p{
