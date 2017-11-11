@@ -320,3 +320,99 @@ $newtag = $_POST['tag'];
     </main>
   </body>
 </html>
+
+
+
+
+
+
+<!-- FOREACH GREJS -->
+
+$q = $db->query("SELECT title, description, link FROM images WHERE userid = '{$userid}'");
+while($r = $q->fetch_array(MYSQLI_ASSOC)):
+
+
+foreach($r as $value) {
+    echo '<div>';
+    echo '<h3>' . $value . '</h3>';
+    echo '<p>' . $value . '</p>';
+    echo '<img>' . $value . '</img>';
+    echo '</div>';
+}
+endwhile;
+
+
+
+
+
+
+$stmt = $db->prepare("SELECT title, description, link FROM images WHERE userid = '{$userid}'");
+$stmt->execute();
+$stmt->bind_result($title, $description, $link);
+$stmt->fetch();
+
+?>
+<br><br>
+<img class="portfolioimages" src="<?php echo $link; ?>" />
+<h3 class="imagetitle"><?php echo $title; ?></h3>
+<p class="imagedescription"><?php echo $description; ?></p>
+
+
+
+<!-- PART OF AJAX SEARCH FUNCTION -->
+
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+  $("#search-box").keyup(function(){
+    $.ajax({
+    type: "POST",
+    url: "searchusers.php",
+    data:'keyword='+$(this).val(),
+    beforeSend: function(){
+      $("#search-box").css("background","#FFF url(img/LoaderIcon.gif) no-repeat 165px");
+    },
+    success: function(data){
+      $("#suggesstion-box").show();
+      $("#suggesstion-box").html(data);
+      $("#search-box").css("background","#FFF");
+    }
+    });
+  });
+});
+//To select country name
+function selectUser(val) {
+$("#search-box").val(val);
+$("#suggesstion-box").hide();
+}
+</script>
+
+
+
+
+<!-- SEARCH FOR IMAGES -->
+
+<?php
+
+@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+
+if ($db->connect_error) {
+    echo "could not connect: " . $db->connect_error;
+    printf("<br><a href=index.php>Return to home page </a>");
+    exit();
+}
+
+$stmt = $db->prepare("SELECT title, description, link FROM images");
+$stmt->execute();
+$stmt->bind_result($title, $description, $link);
+while ($stmt->fetch()) {?>
+  <br><br>
+  <div class="imagefolder">
+    <img class="portfolioimages" src="<?php echo $link; ?>" />
+    <h3 class="imagetitle"><?php echo $title; ?></h3>
+    <p class="imagedescription"><?php echo $description; ?></p>
+  </div>
+<?php  }
+
+?>

@@ -190,13 +190,15 @@ if(isset($_POST['username'], $_POST['password'])) {
           $stmt = $db->prepare("SELECT title, description, link FROM images WHERE userid = '{$userid}'");
           $stmt->execute();
           $stmt->bind_result($title, $description, $link);
-          $stmt->fetch();
+          while ($stmt->fetch()) {?>
+            <br><br>
+            <img class="portfolioimages" src="<?php echo $link; ?>" />
+            <h3 class="imagetitle"><?php echo $title; ?></h3>
+            <p class="imagedescription"><?php echo $description; ?></p>
+        <?php  }
 
           ?>
-          <br><br>
-          <img class="portfolioimages" src="<?php echo $link; ?>" />
-          <h3 class="imagetitle"><?php echo $title; ?></h3>
-          <p class="imagedescription"><?php echo $description; ?></p>
+
         </div>
 <!-- above code developed from https://stackoverflow.com/questions/15735450/images-as-links-in-mysql-database -->
 

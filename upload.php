@@ -83,7 +83,7 @@ $stmt->execute();
   <body id="uploadbody">
     <main id="uploadmain">
 
-      <form id="uploadform" action="account.php" method="post" enctype="multipart/form-data">
+      <form id="uploadform" method="post" enctype="multipart/form-data">
 
         <p>Upload an image</p>
         <br><br>
@@ -110,7 +110,7 @@ $stmt->execute();
           if(empty($error)) {
               echo '<a id="uploadlinkone" href="uploadedfiles/'.$newfilename.'">YOUR UPLOADED FILE';
               echo "</br>";
-              echo '<a id="uploadlinktwo" href="gallerypage.php">Go to your portfolio</a>';
+              echo '<a id="uploadlinktwo" href="account.php">Go to your portfolio</a>';
           } else {
               foreach ($error as $err) {
               echo $err;

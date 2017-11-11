@@ -4,8 +4,6 @@ var icon = document.getElementById("hamburger").addEventListener("click", toggle
 var menu = document.getElementById('topnav');
 
 
-
-
 function toggleNav(){
 	menu.classList.replace("close","open");
 }
@@ -17,9 +15,6 @@ function toggleNav(){
 			menu.toggleClass("open");
 		});
 	} */
-
-
-
 
 
 var questionmark = document.getElementById("infotext");

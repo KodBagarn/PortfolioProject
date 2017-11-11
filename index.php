@@ -5,6 +5,9 @@
      ?>
     <link rel="stylesheet" href="main.css">
     <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+
+
+
     <title>Creative Colony</title>
   </head>
   <body>
@@ -16,9 +19,10 @@
 
     <main id="indexmain">
       <div id="publicgalleries">
-        <form id="searchform" action="" method="">
+        <form id="searchform" action="index.php" method="POST">
           <h2 id="exploreh2">EXPLORE</h2>
-          <input type="text" name="" value="">
+          <input type="text" name="searchimages" value="">
+          <input id="mainsearchbutton" type="submit" name="mainsearchbutton" value="Go">
           <a href="#" onmouseover="toggleClassInfo();" onmouseout="toggleClassInfo();">
             <img id="questionbutton" src="img/questionmark.png" alt="">
           </a>
@@ -26,28 +30,65 @@
 
 
 
-        <div id="infotext" class="closed">
-  				<p>You can search for #TAGS, users or portfolios</p>
+
+
+        <div id="publicimages">
+
+
+
+
+          <?php
+
+          $searchimages = "";
+
+          if (isset($_POST) && !empty($_POST)) {
+              $searchimages = trim($_POST['searchimages']);
+          }
+
+          $searchimages = addslashes($searchimages);
+
+          @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+
+          if ($db->connect_error) {
+              echo "could not connect: " . $db->connect_error;
+              printf("<br><a href=index.php>Return to home page </a>");
+              exit();
+          }
+
+          $query = ("SELECT title, description, link, public FROM images WHERE public = NULL");
+          if ($searchimages) {
+              $query = $query . " and title like '%" . $searchimages . "%'";
+          }
+
+            $stmt = $db->prepare($query);
+            $stmt->bind_result($title);
+            $stmt->execute();
+
+            while ($stmt->fetch()) {?>
+              <br><br>
+              <div class="imagefolder">
+                <img class="portfolioimages" src="<?php echo $link; ?>" />
+                <h3 class="imagetitle"><?php echo $title; ?></h3>
+                <p class="imagedescription"><?php echo $description; ?></p>
+              </div>
+            <?php  }
+
+            ?>
+
+            <div id="infotext" class="closed">
+      				<p>Search for images here</p>
+            </div>
+
+          <br>
+          <a id="loadlink" href="#">Load more...</a>
         </div>
-
-
-
-        <img id="placeholderimg" src="img/placeholderimg.jpg" alt="">
-        <img id="placeholderimg" src="img/pl2.jpg" alt="">
-        <img id="placeholderimg" src="img/pl3.jpg" alt="">
-        <img id="placeholderimg" src="img/pl4.jpg" alt="">
-        <img id="placeholderimg" src="img/pl5.jpg" alt="">
-        <img id="placeholderimg" src="img/placeholderimg.jpg" alt="">
-        <img id="placeholderimg" src="img/placeholderimg.jpg" alt="">
-        <img id="placeholderimg" src="img/placeholderimg.jpg" alt="">
-        <img id="placeholderimg" src="img/placeholderimg.jpg" alt="">
-        <br>
-        <a id="loadlink" href="#">Load more...</a>
       </div>
       <script type="text/javascript" src="js.js"></script>
     </main>
     <?php
      include("footer.php");
     ?>
+
+
   </body>
 </html>
