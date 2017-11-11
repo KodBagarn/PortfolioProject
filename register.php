@@ -128,6 +128,29 @@ if (isset($_POST['newuser'])) {
             } else if (isset($_POST['newuser']) && isset($_POST['newpassword']) && isset($_POST['firstname'])&& isset($_POST['lastname'])&& isset($_POST['email'])&& isset($_POST['phone'])){
               add_userinfo();
               echo '<h2>Thanks for registering and Welcome to the Colony!</h2>';
+
+              // @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+              //
+              // $regusername = $_POST['newuser'];
+              //
+              // $sql = $db->prepare("SELECT userid FROM users WHERE username = '{$regusername}'");
+              // $sql->execute();
+              // $sql->bind_result($userid);
+              // $sql->fetch();
+              // echo $regusername;
+              //
+              // echo "$userid";
+              // $title = $regusername."s Portfolio";
+              // $description = "Write your own portfolio description here!";
+              //
+              // if (isset($userid)) {
+              //   $query = ("INSERT INTO portfolio(title, description) VALUES ('{$title}', '{$description}') WHERE userid = '{$userid}'");
+              //   $stmt = $db->prepare($query);
+              //   $stmt->execute();
+              // }
+
+
+
               die("<script>location.href = 'http://localhost/portfolioProject/portfolioProject/account.php'</script>");
             }
           }
