@@ -5,7 +5,7 @@
   include("header.php");
 
 
-@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -18,7 +18,7 @@ if ($db->connect_error) {
 
 function add_comment($comment) {
 
-	@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+	@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 	#here we add the html entities and string escaping
 	$comment= htmlentities($comment);
@@ -76,7 +76,7 @@ if(isset($_POST['username'], $_POST['password'])) {
     $inputusername = stripslashes($_POST['username']);
     $inputuserpass = stripslashes($_POST['password']);
 
-    @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+    @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
     $query = ("SELECT userid, username, userpass FROM users WHERE username = ?");
     $stmt = $db->prepare($query);
@@ -86,14 +86,20 @@ if(isset($_POST['username'], $_POST['password'])) {
 
 
     //$stmt->store_result();
+    if (isset($_POST['rememberme'])) {
+      $rememberme = $_POST['rememberme'];
+    }
 
-    echo $userpass;
 
     while($stmt->fetch()){
 
     if($userpass == sha1($inputuserpass)) {
       $_SESSION['username'] = $inputusername;
        $_SESSION['userid'] = $userid;
+         if ($rememberme = $_POST['rememberme']) {
+          $cookie_name = 'username';
+          $cookie_value = $inputusername;
+          setcookie($cookie_name, $cookie_value, time()+86400);}
       header("refresh:0");
       exit();
 
@@ -145,8 +151,15 @@ if(isset($_POST['username'], $_POST['password'])) {
       <h2 id="accounth2">Account</h2>
 
       <form class="forms" action="" method="post">
-        <input type="text" name="username" placeholder="username">
+        <?php $cookie_name = 'username';
+         if (isset($_COOKIE[$cookie_name])) {
+          echo '<input type="text" name="username" placeholder="username" value="';echo "$_COOKIE[$cookie_name]"; echo '">';
+        }else {
+          echo '<input type="text" name="username" placeholder="username" value=""> </input>';
+        }
+           ?>
         <input type="password" name="password" placeholder="password">
+         <p id="remember">Remember username</p> <input id="checkbox" type="checkbox" name="rememberme"> <br><br><br>
         <input class="formsubmit" type="submit" name="login" value="Log in">
         <br>
         <a href="register.php">Don't have an account? Click me!</a>
@@ -167,7 +180,7 @@ if(isset($_POST['username'], $_POST['password'])) {
             <h4 id="portfoliocreator">Creator: <?php echo "$inputusername"; ?></h4>
             <h4 id="portfoliodescription"> <?php
 
-            @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+            @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
             $userid = ($_SESSION['userid']);
 
@@ -231,7 +244,7 @@ if(isset($_POST['username'], $_POST['password'])) {
           <?php
 
 
-          @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+          @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
           if (isset($_SESSION['username'])) {
             $userid = ($_SESSION['userid']);

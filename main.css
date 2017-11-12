@@ -267,6 +267,15 @@ h1 {
   margin-bottom: 40px;
 }
 
+
+
+#checkbox {
+  float: left;
+  width: 20px;
+  margin-top: 18.1px;
+  margin-left: 10px;
+}
+
 .forms > a {
   text-decoration: none;
   color: #000000;
