@@ -416,3 +416,47 @@ while ($stmt->fetch()) {?>
 <?php  }
 
 ?>
+
+
+
+
+
+
+
+<?php
+
+$searchimages = "";
+
+if (isset($_POST) && !empty($_POST)) {
+    $searchimages = trim($_POST['searchimages']);
+}
+
+$searchimages = addslashes($searchimages);
+
+@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+
+if ($db->connect_error) {
+    echo "could not connect: " . $db->connect_error;
+    printf("<br><a href=index.php>Return to home page </a>");
+    exit();
+}
+
+$query = ("SELECT title, description, link, public FROM images WHERE public = NULL");
+if ($searchimages) {
+    $query = $query . " and title like '%" . $searchimages . "%'";
+}
+
+  $stmt = $db->prepare($query);
+  $stmt->bind_result($title);
+  $stmt->execute();
+
+  while ($stmt->fetch()) {?>
+    <br><br>
+    <div class="imagefolder">
+      <img class="portfolioimages" src="<?php echo $link; ?>" />
+      <h3 class="imagetitle"><?php echo $title; ?></h3>
+      <p class="imagedescription"><?php echo $description; ?></p>
+    </div>
+  <?php  }
+
+  ?>

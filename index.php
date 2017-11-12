@@ -34,20 +34,9 @@
 
         <div id="publicimages">
 
-
-
-
           <?php
 
-          $searchimages = "";
-
-          if (isset($_POST) && !empty($_POST)) {
-              $searchimages = trim($_POST['searchimages']);
-          }
-
-          $searchimages = addslashes($searchimages);
-
-          @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+          @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
           if ($db->connect_error) {
               echo "could not connect: " . $db->connect_error;
@@ -55,25 +44,26 @@
               exit();
           }
 
-          $query = ("SELECT title, description, link, public FROM images WHERE public = NULL");
-          if ($searchimages) {
-              $query = $query . " and title like '%" . $searchimages . "%'";
-          }
+          $usersearch = $_POST['searchimages'];
 
-            $stmt = $db->prepare($query);
-            $stmt->bind_result($title);
-            $stmt->execute();
+          $stmt = $db->prepare("SELECT title, description, link FROM images
+              WHERE title LIKE '%{$usersearch}%'");
+          $stmt->execute();
+          $stmt->bind_result($title, $description, $link);
+          while ($stmt->fetch()) {?>
+            <br><br>
+            <div class="portfolioimgfolders">
+              <img src="<?php echo $link; ?>" />
+              <h3 class="imagetitle"><?php echo $title; ?></h3>
+              <p class="imagedescription"><?php echo $description; ?></p>
+            </div>
+          <?php  }
 
-            while ($stmt->fetch()) {?>
-              <br><br>
-              <div class="imagefolder">
-                <img class="portfolioimages" src="<?php echo $link; ?>" />
-                <h3 class="imagetitle"><?php echo $title; ?></h3>
-                <p class="imagedescription"><?php echo $description; ?></p>
-              </div>
-            <?php  }
+          ?>
 
-            ?>
+
+
+
 
             <div id="infotext" class="closed">
       				<p>Search for images here</p>

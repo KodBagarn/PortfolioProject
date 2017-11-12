@@ -242,7 +242,6 @@ if(isset($_POST['username'], $_POST['password'])) {
 
           while ($stmt->fetch()) {?>
             <div class="portfolioimgfolders">
-              <br><br>
               <img class="portfolioimages" src="<?php echo $link; ?>" />
               <h3 class="imagetitle"><?php echo $title; ?></h3>
               <p class="imagedescription"><?php echo $description; ?></p>

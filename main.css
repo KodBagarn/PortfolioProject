@@ -151,7 +151,7 @@ h1 {
 
 #publicimages {
   text-align: left;
-  padding: 5%;
+  padding: 3%;
   overflow: hidden;
 }
 
@@ -237,6 +237,8 @@ h1 {
   margin-bottom: 20px;
   display: inline-block;
   font-size: 20px;
+  width: 100%;
+  text-align: center;
 }
 
 /*     Account      */
@@ -344,10 +346,13 @@ body > main > .accountoptions > .accountlinks:hover{
 }
 
 .portfolioimgfolders {
-  width: 30%;
-  margin: 5px;
+  padding: 5px;
   display: inline-block;
   text-align: left;
+  float: left;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
 }
 
 .portfolioimgfolders > img {
@@ -709,6 +714,7 @@ select {
 
   #exploreh2 {
     margin-top: 40px;
+    margin-bottom: 10px;
   }
 
   #uploadform > p {
@@ -737,6 +743,14 @@ select {
   #portfolioname {
     font-size: 30px;
     margin-bottom: 30px;
+  }
+
+  .imagetitle {
+    font-size: 18px;
+  }
+
+  .imagedescription {
+    font-size: 14px;
   }
 
 
