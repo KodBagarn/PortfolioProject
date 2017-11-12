@@ -1,6 +1,6 @@
 /*      All pages     */
 
-*{
+* {
   font-family: "Abel", sans-serif;
 }
 
@@ -116,21 +116,16 @@ h1 {
 }
 
 #topnav > ul > li > a:hover {
-  /*color: #7c7c7c;*/
   cursor: pointer;
   border-bottom: 2px solid #ffcc75;
   color: #d1d1d1;
 }
 
 .active{
-  /*border: solid #967b39 2px;
-  border-radius: 5px;*/
   border-bottom: 2px solid #f79c00;
-  /*background-color: rgba(247, 156, 0, 0.2);*/
 }
 
 .active:hover {
-  /*border: solid #7a652f 2px;*/
   border-bottom: 2px solid #f79c00;
 }
 
@@ -154,7 +149,6 @@ h1 {
   padding: 3%;
   overflow: hidden;
 }
-
 
 .imagefolder {
   float: left;
@@ -241,6 +235,7 @@ h1 {
   text-align: center;
 }
 
+
 /*     Account      */
 
 #accounthtml {
@@ -266,8 +261,6 @@ h1 {
   padding: 0px;
   margin-bottom: 40px;
 }
-
-
 
 #checkbox {
   float: left;
@@ -370,10 +363,6 @@ body > main > .accountoptions > .accountlinks:hover{
   min-width: 120px;
 }
 
-#imagedeletelink{
-
-}
-
 #imagedeletelink > img {
   width: 10%;
   max-width: 20px;
@@ -390,6 +379,7 @@ body > main > .accountoptions > .accountlinks:hover{
   margin: 0px;
   font-size: 12px;
 }
+
 
 /*      Register    */
 
@@ -447,7 +437,6 @@ body > main > .accountoptions > .accountlinks:hover{
   overflow: hidden;
   box-sizing: border-box;
   background-color: #f79c00;
-  /*border: 2px solid #e0e0e0;*/
   text-align: center;
 }
 
@@ -581,10 +570,15 @@ footer > p {
   font-size: 10px;
 }
 
+
 /*      Upload     */
 
 #uploadmain, #uploadbody {
   background-color: #f79c00;
+}
+
+#uploadmain {
+  text-align: center;
 }
 
 #uploadmain > h2 {
@@ -598,7 +592,7 @@ footer > p {
   margin-top: 50px;
 }
 
-#uploadform > #addTagSubmit:focus, #uploadform > #uploadbutton:focus, #uploadform > #uploadsubmit:focus{
+#uploadform > #uploadbutton:focus, #uploadform > #uploadsubmit:focus{
   outline: none;
 }
 
@@ -636,10 +630,6 @@ footer > p {
   color: #ffffff;
 }
 
-#taginput {
-  text-transform: lowercase;
-}
-
 #uploadform > #uploadtitle {
   width: 100%;
   border: 1px solid #ddd;
@@ -650,21 +640,7 @@ footer > p {
   box-sizing: border-box;
 }
 
-#addTagSubmit {
-  width: 60px;
-  height: 30px;
-  display: block;
-  margin: 0 auto;
-  color: #f79c00;
-  font-size: 14px;
-  background-color: #fff;
-  float: right;
-  border: none;
-  margin-right: 5%;
-  cursor: pointer;
-}
-
-#addTagSubmit:hover, #uploadsubmit:hover {
+#uploadsubmit:hover {
   opacity: 0.8;
 }
 
@@ -698,25 +674,26 @@ footer > p {
   color: #bababa;
 }
 
-#uploadform > #optionalp {
-  font-size: 14px;
-  margin-bottom: 5px;
-  margin-top: -10px;
-}
-
 #uploadform > p {
   color: #000;
   font-size: 16px;
   margin-top: 10px;
 }
 
-select {
-  width: 100%;
-  height: 30px;
-  text-transform: lowercase;
-  border: 1px solid #ddd;
-  min-width: 234.41px;
-  color: #8e8e8e;
+#uploadsuccess {
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#uploadlinktwo {
+  color: #000;
+  text-decoration: none;
+  margin: 0;
+}
+
+#uploadlinktwo:hover {
+  opacity: 0.7;
 }
 
 
@@ -738,6 +715,7 @@ select {
 #uploadmain > #delelinkback:hover{
   opacity: 0.81;
 }
+
 
 /*      Media     */
 
@@ -793,29 +771,11 @@ select {
     font-size: 14px;
   }
 
-
   footer > a > img {
     width: 35px;
   }
 
 }
-
-
-@media (min-width: 830px) {
-  body > main > .accountoptions > #accountlinksfolder > .accountlinks {
-    margin-right: 2%;
-  }
-
-  body > main > .accountoptions > #accountlinksfolder > .accountlinks:nth-child(2) {
-    margin-right: 0px;
-
-  }
-
-
-}
-
-
-
 
 @media (min-width: 700px){
 
@@ -834,20 +794,14 @@ select {
 
 }
 
+@media (min-width: 830px) {
+  body > main > .accountoptions > #accountlinksfolder > .accountlinks {
+    margin-right: 2%;
+  }
 
-/*
-    400 mobile
-    640 tablet
-    960 full screen
-*/
+  body > main > .accountoptions > #accountlinksfolder > .accountlinks:nth-child(2) {
+    margin-right: 0px;
 
+  }
 
-
-/*
-<select name="addtags[]">
-  <?php
-    while ($stmt->fetch()) {
-      echo "<option value='""'>".$tag."</option>";
-    }
-   ?>
-</select>*/
+}

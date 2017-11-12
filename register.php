@@ -1,20 +1,20 @@
 <?php
-#check if we're connected to the database
-@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+
+@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
     printf("<br><a href=index.php>Return to home page </a>");
     exit();
 }
+
  ?>
 
 <?php
-#we can create a function to add comments
-#basically it inserts a comment in a database.
+
 function add_userinfo(){
 
-  @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+  @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
   $newuser = $_POST['newuser'];
   $newpassword = sha1($_POST['newpassword']);
   $newfname = $_POST['firstname'];
@@ -22,7 +22,6 @@ function add_userinfo(){
   $newemail = $_POST['email'];
   $newphone = $_POST['phone'];
 
-  #here we add the html entities and string escaping
   $newuser= htmlentities($newuser);
   $newuser = mysqli_real_escape_string($db, $newuser);
 
@@ -41,42 +40,21 @@ function add_userinfo(){
   $newphone= htmlentities($newphone);
   $newphone = mysqli_real_escape_string($db, $newphone);
 
-  #<iframe style="position:fixed; top:10px; left:10px; width:100%; height:100%; z-index:99;" border="0" src="http://ju.se/"  />
-  #try the iframe after you add the "htmlentities"
-
   $stmt = $db->prepare("INSERT INTO users(username, userpass, fname, lname, mail, phone)VALUES (?, ?, ?, ?, ?, ?)");
   $stmt->bind_param('sssssi', $newuser, $newpassword, $newfname, $newlname, $newemail, $newphone);
-  //echo $query;
   $stmt->execute();
 }
-
 
 if (isset($_POST['newuser'])) {
   $testnewuser = mysqli_real_escape_string($db, $_POST['newuser']);
   $testnewpassword = sha1($_POST['newpassword']);
-  #here we test if the POST has been submited
-  #if yes, we call the function 'add_userinfo' which will add a new comment in the DB
+
   $stmt = $db->prepare("SELECT * FROM users WHERE username='$testnewuser' ");
   $stmt->execute();
   $stmt->store_result();
 
-  #here we create a new variable 'totalcount1' just to check if there's at least
-  #one user with the right combination. If there is, we later on print out "access granted"
   $totalcount1 = $stmt->num_rows();
 }
-
-
-#then we create a function to pull out all comments
-#it goes in the database and pulls out all comments.
-
-
-
-#you can also store this in a variable and use later
-# $allcomment = get_user();
-
-
-
-
 
 ?>
 
@@ -122,6 +100,7 @@ if (isset($_POST['newuser'])) {
         <input class= "formsubmit" id="registersubmmit" type="submit" name="register" value="Register">
       </form>
       <?php
+
           if (isset($_POST['newuser'])) {
             if ($totalcount1 != 0 ) {
                 echo '<h2>Username already taken!</h2>';
@@ -129,29 +108,7 @@ if (isset($_POST['newuser'])) {
               add_userinfo();
               echo '<h2>Thanks for registering and Welcome to the Colony!</h2>';
 
-              // @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
-              //
-              // $regusername = $_POST['newuser'];
-              //
-              // $sql = $db->prepare("SELECT userid FROM users WHERE username = '{$regusername}'");
-              // $sql->execute();
-              // $sql->bind_result($userid);
-              // $sql->fetch();
-              // echo $regusername;
-              //
-              // echo "$userid";
-              // $title = $regusername."s Portfolio";
-              // $description = "Write your own portfolio description here!";
-              //
-              // if (isset($userid)) {
-              //   $query = ("INSERT INTO portfolio(title, description) VALUES ('{$title}', '{$description}') WHERE userid = '{$userid}'");
-              //   $stmt = $db->prepare($query);
-              //   $stmt->execute();
-              // }
-
-
-
-              die("<script>location.href = 'http://localhost:8888/portfolioProject/portfolioProject/account.php'</script>");
+              die("<script>location.href = 'http://localhost:/portfolioProject/portfolioProject/account.php'</script>");
             }
           }
 

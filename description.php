@@ -2,8 +2,6 @@
 
 session_start();
 
-//CHECK YOUR CONNECTION TO THE DATABASE
-
 @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
 if ($db->connect_error) {
@@ -12,7 +10,21 @@ if ($db->connect_error) {
     exit();
 }
 
+function add_comment($comment) {
 
+	@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+
+	$comment= htmlentities($comment);
+	$comment = mysqli_real_escape_string($db, $comment);
+
+	$query = ("INSERT INTO comments(comment) VALUES ('{$comment}')");
+	$stmt = $db->prepare($query);
+	$stmt->execute();
+}
+
+if (isset($_POST['description'])) {
+    add_comment($_POST['description']);
+}
 
 if(isset($_POST['description'])){
 
@@ -23,9 +35,6 @@ $stmt = $db->prepare("UPDATE portfolio SET description = '{$userdescription}' WH
 $stmt->execute();
 
 header("location:account.php");
-//$stmt->bind_result();
-
-//$pdescription = $_SESSION['description'];
 
 }
 
@@ -47,11 +56,7 @@ header("location:account.php");
     $userid = ($_SESSION['userid']);
     echo "<h2>{$inputusername}´s Portfolio</h2>";
 
-
     ?>
-
-
-
 
       <form id="uploadform" action="" method="post">
         <a href="account.php"><img src="img/backicon.svg" alt=""></a>
@@ -59,14 +64,10 @@ header("location:account.php");
         <p>Write a short description about the contents of your portfolio!</p>
         <br>
         <textarea required id="descriptionfield" name="description" placeholder="Description" rows="4"></textarea>
-
         <br>
         <input id="uploadsubmit" type="submit" name="edit" value="Confirm">
 
       </form>
-
-
-
 
     </main>
   </body>

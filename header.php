@@ -1,4 +1,5 @@
 <?php
+
   ini_set('session.cookie_httponly', true);
 
   session_start();
@@ -11,6 +12,7 @@
       session_unset();
       session_destroy();
   }
+  
  ?>
 
 <!DOCTYPE html>
