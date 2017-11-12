@@ -36,30 +36,46 @@
 
           <?php
 
-          @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+          @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
           if ($db->connect_error) {
               echo "could not connect: " . $db->connect_error;
               printf("<br><a href=index.php>Return to home page </a>");
               exit();
           }
+          if (isset($_POST['searchimages'])) {
+            $usersearch = $_POST['searchimages'];
 
-          $usersearch = $_POST['searchimages'];
+            $stmt = $db->prepare("SELECT title, description, link FROM images
+                WHERE title LIKE '%{$usersearch}%' OR description LIKE '%{$usersearch}%'");
+            $stmt->execute();
+            $stmt->bind_result($title, $description, $link);
+            while ($stmt->fetch()) {?>
+              <br><br>
+              <div class="portfolioimgfolders">
+                <img src="<?php echo $link; ?>" />
+                <h3 class="imagetitle"><?php echo $title; ?></h3>
+                <p class="imagedescription"><?php echo $description; ?></p>
+              </div>
+            <?php
+            }
+          }else {
+            $stmt = $db->prepare("SELECT title, description, link FROM images");
+            $stmt->execute();
+            $stmt->bind_result($title, $description, $link);
+            while ($stmt->fetch()) {?>
+              <br><br>
+              <div class="portfolioimgfolders">
+                <img src="<?php echo $link; ?>" />
+                <h3 class="imagetitle"><?php echo $title; ?></h3>
+                <p class="imagedescription"><?php echo $description; ?></p>
+              </div>
+              <?php
+              }
+            }
+              ?>
 
-          $stmt = $db->prepare("SELECT title, description, link FROM images
-              WHERE title LIKE '%{$usersearch}%' OR description LIKE '%{$usersearch}%'");
-          $stmt->execute();
-          $stmt->bind_result($title, $description, $link);
-          while ($stmt->fetch()) {?>
-            <br><br>
-            <div class="portfolioimgfolders">
-              <img src="<?php echo $link; ?>" />
-              <h3 class="imagetitle"><?php echo $title; ?></h3>
-              <p class="imagedescription"><?php echo $description; ?></p>
-            </div>
-          <?php  }
 
-          ?>
 
 
 
