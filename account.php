@@ -244,7 +244,6 @@ if(isset($_POST['username'], $_POST['password'])) {
 
           while ($stmt->fetch()) {?>
             <div class="portfolioimgfolders">
-              <br><br>
               <img class="portfolioimages" src="<?php echo $link; ?>" />
             <?php  echo '<a id="imagedeletelink" href="deleteimage.php?imageid=' . urlencode($imageid) . '"><img src="img/cross.png"></a> '; ?>
               <h3 class="imagetitle"><?php echo $title; ?></h3>
