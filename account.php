@@ -47,12 +47,9 @@ if(isset($_POST['username'], $_POST['password'])) {
     $stmt->execute();
     $stmt->bind_result($userid, $username, $userpass);
 
-
-    //$stmt->store_result();
     if (isset($_POST['rememberme'])) {
       $rememberme = $_POST['rememberme'];
     }
-
 
     while($stmt->fetch()){
 
@@ -65,20 +62,13 @@ if(isset($_POST['username'], $_POST['password'])) {
           setcookie($cookie_name, $cookie_value, time()+86400);}
       header("refresh:0");
 
-
-
     } else {
       echo "<h3 id=\"wrongtext\">Wrong username or password!</h3>";
-        //echo "<h3 id=\"welcometext\">Welcome $inputusername!</h3>";
-
     }
 }
 
 }
 ?>
-
-
-
 
 <html id="accounthtml">
   <head>
@@ -95,21 +85,8 @@ if(isset($_POST['username'], $_POST['password'])) {
 
       <?php
 
-
-
-     //   if(isset($_SESSION['username'])){
-     //   $inputusername = $_SESSION['username'];
-     //   $stmt=$db->prepare("SELECT userid FROM users WHERE username ='$inputusername' AND userid =(?)");
-     //   $stmt->bind_param('i', $userid);
-     //   $stmt->execute();
-     //   echo "$inputusername";
-     //   echo "$userid";
-     // }
-
-
      if (!isset($_SESSION['username'])) {
        ?>
-
 
       <h2 id="accounth2">Account</h2>
 
@@ -150,17 +127,15 @@ if(isset($_POST['username'], $_POST['password'])) {
 
               $publicated = $sql->num_rows();
 
-
               if ($publicated == 0) {
-                echo "<br><br>Make public";
+                echo "<br><br><p class=publicprivate>Private</p>";
               }else {
-                echo "<br><br>Make private";
+                echo "<br><br><p class=publicprivate>Public</p>";
               } ?>
 
                <form class=""  method="POST">
                  <input type="submit" name="public" value="Change">
                </form>
-
 
               <?php
 
@@ -173,11 +148,9 @@ if(isset($_POST['username'], $_POST['password'])) {
                     $statement = $db->prepare($query);
                     $statement->execute();
                     $statement->store_result();
-
                     $statement = $db->prepare("UPDATE images SET public = !public WHERE userid = '{$userid}'; ");
                     $statement->execute();
 
-                    header('location:account.php');
                  }
                ?>
 
@@ -196,12 +169,8 @@ if(isset($_POST['username'], $_POST['password'])) {
 
             $totalcount = $statement->num_rows();
 
-
-
             $title = $inputusername."s Portfolio";
             $description = 'Please insert a brief description about you Portfolio!';
-
-
 
             if ($totalcount == 0) {
               $query = ("INSERT INTO portfolio(title, description, userid) VALUES ('{$title}', '{$description}', ?)");
@@ -221,28 +190,11 @@ if(isset($_POST['username'], $_POST['password'])) {
               }
             }
 
-
-
-            // $query =("UPDATE portfolio SET title = '{$title}', description = '{$description}' WHERE userid = '{$userid}')");
-            // $stmt = $db->prepare($query);
-            // $stmt->execute();
-
-
-
-              // $query = ("SELECT description, title FROM portfolio WHERE userid = '{$userid}'");
-              // $stmt = $db->prepare($query);
-              // $stmt->bind_result($description, $title);
-              // $stmt->execute();
-              //
-              //
-              //
-              // while ($stmt->fetch()) {
                 ?>
                 </h4>
                 <?php
               }
               ?>
-
 
           </div>
 
@@ -258,9 +210,6 @@ if(isset($_POST['username'], $_POST['password'])) {
             $stmt->execute();
             $stmt->bind_result($imageid, $title, $description, $link);
 
-
-
-
           while ($stmt->fetch()) {?>
             <div class="portfolioimgfolders">
               <img class="portfolioimages" src="<?php echo $link; ?>" />
@@ -275,9 +224,6 @@ if(isset($_POST['username'], $_POST['password'])) {
           </div>
         </div>
 <!-- above code developed from https://stackoverflow.com/questions/15735450/images-as-links-in-mysql-database -->
-
-
-
 
     </main>
     <footer id="accountfooter">
