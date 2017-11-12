@@ -5,7 +5,7 @@
   include("header.php");
 
 
-@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -18,7 +18,7 @@ if ($db->connect_error) {
 
 function add_comment($comment) {
 
-	@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+	@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
 	#here we add the html entities and string escaping
 	$comment= htmlentities($comment);
@@ -76,7 +76,7 @@ if(isset($_POST['username'], $_POST['password'])) {
     $inputusername = stripslashes($_POST['username']);
     $inputuserpass = stripslashes($_POST['password']);
 
-    @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+    @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
     $query = ("SELECT userid, username, userpass FROM users WHERE username = ?");
     $stmt = $db->prepare($query);
@@ -167,7 +167,7 @@ if(isset($_POST['username'], $_POST['password'])) {
             <h4 id="portfoliocreator">Creator: <?php echo "$inputusername"; ?></h4>
             <h4 id="portfoliodescription"> <?php
 
-            @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+            @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
             $userid = ($_SESSION['userid']);
 
@@ -231,7 +231,7 @@ if(isset($_POST['username'], $_POST['password'])) {
           <?php
 
 
-          @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+          @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
           if (isset($_SESSION['username'])) {
             $userid = ($_SESSION['userid']);
