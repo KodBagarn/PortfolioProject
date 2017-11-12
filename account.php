@@ -162,6 +162,49 @@ if(isset($_POST['username'], $_POST['password'])) {
             <div id="accountlinksfolder">
               <a class="accountlinks" href="description.php" >Edit your Portfolios description</a>
               <a class="accountlinks" href="upload.php">Expand your portfolio with more fantastic content</a>
+
+              <?php
+              @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+
+              $userid = $_SESSION['userid'];
+
+              $sql = $db->prepare("SELECT public FROM images WHERE public = 1 AND userid = '{$userid}'");
+              $sql->execute();
+              $sql->store_result();
+
+              $publicated = $sql->num_rows();
+
+
+              if ($publicated == 0) {
+                echo "<br><br>Make public";
+              }else {
+                echo "<br><br>Make private";
+              } ?>
+
+               <form class=""  method="POST">
+                 <input type="submit" name="public" value="Change">
+               </form>
+
+
+              <?php
+
+              @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+
+                  if(isset($_POST['public'])){
+                    $userid = $_SESSION['userid'];
+
+                    $query = ("SELECT public FROM images WHERE userid = '{$userid}'");
+                    $statement = $db->prepare($query);
+                    $statement->execute();
+                    $statement->store_result();
+
+                    $statement = $db->prepare("UPDATE images SET public = !public WHERE userid = '{$userid}'; ");
+                    $statement->execute();
+
+                    header('location:account.php');
+                 }
+               ?>
+
             </div>
           <div id="accountinformation">
             <h4 id="portfoliocreator">Creator: <?php echo "$inputusername"; ?></h4>

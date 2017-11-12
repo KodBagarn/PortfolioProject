@@ -32,7 +32,7 @@ include("config.php");
     echo "<h2>{$inputusername}´s Portfolio</h2>";
 
 
-    @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+    @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
     if ($db->connect_error) {
         echo "could not connect: " . $db->connect_error;
