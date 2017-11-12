@@ -30,7 +30,7 @@
 
           <?php
 
-          @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+          @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
           if ($db->connect_error) {
               echo "could not connect: " . $db->connect_error;
@@ -40,7 +40,7 @@
 
           function add_comment($comment) {
 
-          	@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+          	@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
           	$comment= htmlentities($comment);
           	$comment = mysqli_real_escape_string($db, $comment);
