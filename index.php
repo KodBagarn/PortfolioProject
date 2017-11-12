@@ -47,7 +47,7 @@
           $usersearch = $_POST['searchimages'];
 
           $stmt = $db->prepare("SELECT title, description, link FROM images
-              WHERE title LIKE '%{$usersearch}%'");
+              WHERE title LIKE '%{$usersearch}%' OR description LIKE '%{$usersearch}%'");
           $stmt->execute();
           $stmt->bind_result($title, $description, $link);
           while ($stmt->fetch()) {?>

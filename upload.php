@@ -100,15 +100,6 @@ $stmt->execute();
         <input required id="uploadtitle" type="text" name="title" placeholder="Title">
         <textarea required id="descriptionfield" name="description" placeholder="Description" rows="4"></textarea>
 
-        <br>
-        <p id="choosetagsp">Choose one or several tags</p>
-        <br><br>
-        <p id="optionalp">(optional)</p>
-        <br>
-
-        <br>
-        <button id="addTagSubmit" for="addtag" name="addtag" value="﹢Add tag">Add tag +</button>
-        <br>
         <input id="uploadsubmit" type="submit" name="upload" value="Upload">
 
       </form>
