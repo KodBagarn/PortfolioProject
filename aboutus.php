@@ -33,8 +33,6 @@
       </p>
       <img class="aboutusimg" src="img/organization.png">
 
-      <!--<img id="logo" src="img/templogo.png"> -->
-
     </main>
     <?php
      include("footer.php");
