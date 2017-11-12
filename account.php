@@ -3,7 +3,7 @@
   include("config.php");
   include("header.php");
 
-@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -13,7 +13,7 @@ if ($db->connect_error) {
 
 function add_comment($comment) {
 
-	@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+	@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 	$comment= htmlentities($comment);
 	$comment = mysqli_real_escape_string($db, $comment);
@@ -39,7 +39,7 @@ if(isset($_POST['username'], $_POST['password'])) {
     $inputusername = stripslashes($_POST['username']);
     $inputuserpass = stripslashes($_POST['password']);
 
-    @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+    @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
     $query = ("SELECT userid, username, userpass FROM users WHERE username = ?");
     $stmt = $db->prepare($query);
@@ -47,12 +47,9 @@ if(isset($_POST['username'], $_POST['password'])) {
     $stmt->execute();
     $stmt->bind_result($userid, $username, $userpass);
 
-
-    //$stmt->store_result();
     if (isset($_POST['rememberme'])) {
       $rememberme = $_POST['rememberme'];
     }
-
 
     while($stmt->fetch()){
 
@@ -65,20 +62,13 @@ if(isset($_POST['username'], $_POST['password'])) {
           setcookie($cookie_name, $cookie_value, time()+86400);}
       header("refresh:0");
 
-
-
     } else {
       echo "<h3 id=\"wrongtext\">Wrong username or password!</h3>";
-        //echo "<h3 id=\"welcometext\">Welcome $inputusername!</h3>";
-
     }
 }
 
 }
 ?>
-
-
-
 
 <html id="accounthtml">
   <head>
@@ -95,21 +85,8 @@ if(isset($_POST['username'], $_POST['password'])) {
 
       <?php
 
-
-
-     //   if(isset($_SESSION['username'])){
-     //   $inputusername = $_SESSION['username'];
-     //   $stmt=$db->prepare("SELECT userid FROM users WHERE username ='$inputusername' AND userid =(?)");
-     //   $stmt->bind_param('i', $userid);
-     //   $stmt->execute();
-     //   echo "$inputusername";
-     //   echo "$userid";
-     // }
-
-
      if (!isset($_SESSION['username'])) {
        ?>
-
 
       <h2 id="accounth2">Account</h2>
 
@@ -140,7 +117,7 @@ if(isset($_POST['username'], $_POST['password'])) {
               <a class="accountlinks" href="upload.php">Expand your portfolio with more fantastic content</a>
 
               <?php
-              @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+              @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
               $userid = $_SESSION['userid'];
 
@@ -150,21 +127,19 @@ if(isset($_POST['username'], $_POST['password'])) {
 
               $publicated = $sql->num_rows();
 
-
               if ($publicated == 0) {
-                echo "<br><br>Make public";
+                echo "<br><br><p class=publicprivate>Private</p>";
               }else {
-                echo "<br><br>Make private";
+                echo "<br><br><p class=publicprivate>Public</p>";
               } ?>
 
                <form class=""  method="POST">
                  <input type="submit" name="public" value="Change">
                </form>
 
-
               <?php
 
-              @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+              @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
                   if(isset($_POST['public'])){
                     $userid = $_SESSION['userid'];
@@ -173,11 +148,9 @@ if(isset($_POST['username'], $_POST['password'])) {
                     $statement = $db->prepare($query);
                     $statement->execute();
                     $statement->store_result();
-
                     $statement = $db->prepare("UPDATE images SET public = !public WHERE userid = '{$userid}'; ");
                     $statement->execute();
 
-                    header('location:account.php');
                  }
                ?>
 
@@ -186,7 +159,7 @@ if(isset($_POST['username'], $_POST['password'])) {
             <h4 id="portfoliocreator">Creator: <?php echo "$inputusername"; ?></h4>
             <h4 id="portfoliodescription"> <?php
 
-            @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+            @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
             $userid = ($_SESSION['userid']);
 
@@ -196,12 +169,8 @@ if(isset($_POST['username'], $_POST['password'])) {
 
             $totalcount = $statement->num_rows();
 
-
-
             $title = $inputusername."s Portfolio";
             $description = 'Please insert a brief description about you Portfolio!';
-
-
 
             if ($totalcount == 0) {
               $query = ("INSERT INTO portfolio(title, description, userid) VALUES ('{$title}', '{$description}', ?)");
@@ -221,45 +190,24 @@ if(isset($_POST['username'], $_POST['password'])) {
               }
             }
 
-
-
-            // $query =("UPDATE portfolio SET title = '{$title}', description = '{$description}' WHERE userid = '{$userid}')");
-            // $stmt = $db->prepare($query);
-            // $stmt->execute();
-
-
-
-              // $query = ("SELECT description, title FROM portfolio WHERE userid = '{$userid}'");
-              // $stmt = $db->prepare($query);
-              // $stmt->bind_result($description, $title);
-              // $stmt->execute();
-              //
-              //
-              //
-              // while ($stmt->fetch()) {
                 ?>
                 </h4>
                 <?php
               }
               ?>
 
-
           </div>
 
           <div id="bigportfoliofolder">
           <?php
 
-
-          @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+          @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
           if (isset($_SESSION['username'])) {
             $userid = ($_SESSION['userid']);
             $stmt = $db->prepare("SELECT imageid, title, description, link FROM images WHERE userid = '{$userid}'");
             $stmt->execute();
             $stmt->bind_result($imageid, $title, $description, $link);
-
-
-
 
           while ($stmt->fetch()) {?>
             <div class="portfolioimgfolders">
@@ -275,9 +223,6 @@ if(isset($_POST['username'], $_POST['password'])) {
           </div>
         </div>
 <!-- above code developed from https://stackoverflow.com/questions/15735450/images-as-links-in-mysql-database -->
-
-
-
 
     </main>
     <footer id="accountfooter">
