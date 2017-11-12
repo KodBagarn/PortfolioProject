@@ -240,22 +240,18 @@ if(isset($_POST['username'], $_POST['password'])) {
             $stmt = $db->prepare("SELECT title, description, link FROM images WHERE userid = '{$userid}'");
             $stmt->execute();
             $stmt->bind_result($title, $description, $link);
-            $stmt->fetch();
-
-            ?>
 
 
-          $stmt = $db->prepare("SELECT title, description, link FROM images WHERE userid = '{$userid}'");
-          $stmt->execute();
-          $stmt->bind_result($title, $description, $link);
           while ($stmt->fetch()) {?>
             <br><br>
             <img class="portfolioimages" src="<?php echo $link; ?>" />
+            <a id="deletelink" href="deleteimage.php"><img src="img/cross.png"></a>
             <h3 class="imagetitle"><?php echo $title; ?></h3>
             <p class="imagedescription"><?php echo $description; ?></p>
 
             <?php
           }
+        }
           ?>
 
         </div>
