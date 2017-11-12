@@ -177,7 +177,7 @@ if(isset($_POST['username'], $_POST['password'])) {
               <a class="accountlinks" href="upload.php">Expand your portfolio with more fantastic content</a>
 
               <?php
-              @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+              @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
               $userid = $_SESSION['userid'];
 
@@ -201,7 +201,7 @@ if(isset($_POST['username'], $_POST['password'])) {
 
               <?php
 
-              @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+              @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
                   if(isset($_POST['public'])){
                     $userid = $_SESSION['userid'];
