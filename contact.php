@@ -83,7 +83,7 @@ if (isset($_POST['message'])) {
       ?>
     </header>
     <main>
-      <h2>Contact us</h2>
+      <h2 id="contacth2">Contact us</h2>
       <div id="contactpage">
         <div id="contactleft">
           <p>
