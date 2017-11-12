@@ -2,7 +2,7 @@
 
 session_start();
 
-@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -12,7 +12,7 @@ if ($db->connect_error) {
 
 function add_comment($comment) {
 
-	@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+	@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
 	$comment= htmlentities($comment);
 	$comment = mysqli_real_escape_string($db, $comment);
@@ -36,7 +36,7 @@ if (isset($_POST['description'])) {
 
 if(isset($_FILES['upload'])){
 
-    @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+    @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
     $allowedextensions = array('jpeg', 'png', 'jpg');
     $extension = strtolower(substr($_FILES['upload']['name'], strpos($_FILES['upload']['name'], '.') +1));
@@ -61,30 +61,34 @@ if(isset($_FILES['upload'])){
 
     }
 
-?>
+  ?>
 
-<?php
+  <?php
 
-if (isset($_POST['upload'])) {
-  $uploadedimage = "uploadedfiles/{$newfilename}";
-}
+  if (isset($_POST['upload'])) {
+    $uploadedimage = "uploadedfiles/{$newfilename}";
+  }
 
-if (isset($_POST['title'])) {
-  $uploadedtitle = $_POST['title'];
-}
+  if (isset($_POST['title'])) {
+    $uploadedtitle = $_POST['title'];
+  }
 
-if (isset($_POST['description'])) {
-  $uploadeddescription = $_POST['description'];
-}
+  if (isset($_POST['description'])) {
+    $uploadeddescription = $_POST['description'];
+  }
 
-if (isset($_SESSION['username'])) {
-  $userid = ($_SESSION['userid']);
-}
+  if (isset($_SESSION['username'])) {
+    $userid = ($_SESSION['userid']);
+  }
 
-$query = ("INSERT INTO images(title, description, link, userid) VALUES ('{$uploadedtitle}', '{$uploadeddescription}', '{$uploadedimage}', '{$userid}')");
-$stmt = $db->prepare($query);
-$stmt->execute();
+  if(empty($error)) {
 
+
+
+  $query = ("INSERT INTO images(title, description, link, userid) VALUES ('{$uploadedtitle}', '{$uploadeddescription}', '{$uploadedimage}', '{$userid}')");
+  $stmt = $db->prepare($query);
+  $stmt->execute();
+  }
 }
 
 ?>

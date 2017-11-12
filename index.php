@@ -40,7 +40,7 @@
 
           function add_comment($comment) {
 
-          	@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+          	@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
           	$comment= htmlentities($comment);
           	$comment = mysqli_real_escape_string($db, $comment);
