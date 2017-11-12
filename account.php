@@ -160,8 +160,8 @@ if(isset($_POST['username'], $_POST['password'])) {
           ?>
           <div class="accountoptions">
             <div id="accountlinksfolder">
-              <a class="accountlinks" href="upload.php" >Edit your Portfolios description</a>
-              <a class="accountlinks" href="description.php">Expand your portfolio with more fantastic content</a>
+              <a class="accountlinks" href="description.php" >Edit your Portfolios description</a>
+              <a class="accountlinks" href="upload.php">Expand your portfolio with more fantastic content</a>
             </div>
           <div id="accountinformation">
             <h4 id="portfoliocreator">Creator: <?php echo "$inputusername"; ?></h4>
