@@ -30,7 +30,7 @@
 
           <?php
 
-          @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+          @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
           if ($db->connect_error) {
               echo "could not connect: " . $db->connect_error;
@@ -58,7 +58,7 @@
             $usersearch = $_POST['searchimages'];
 
             $stmt = $db->prepare("SELECT title, description, link FROM images
-                WHERE title LIKE '%{$usersearch}%' OR description LIKE '%{$usersearch}%'");
+                WHERE public = '1' AND (title LIKE '%{$usersearch}%' OR description LIKE '%{$usersearch}%')");
             $stmt->execute();
             $stmt->bind_result($title, $description, $link);
             while ($stmt->fetch()) {?>
@@ -71,7 +71,7 @@
             <?php
             }
           }else {
-            $stmt = $db->prepare("SELECT title, description, link FROM images");
+            $stmt = $db->prepare("SELECT title, description, link FROM images WHERE public = '1'");
             $stmt->execute();
             $stmt->bind_result($title, $description, $link);
             while ($stmt->fetch()) {?>
@@ -91,7 +91,6 @@
             </div>
 
           <br>
-          <a id="loadlink" href="#">Load more...</a>
         </div>
       </div>
       <script type="text/javascript" src="js.js"></script>
