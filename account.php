@@ -5,7 +5,7 @@
   include("header.php");
 
 
-@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -18,7 +18,7 @@ if ($db->connect_error) {
 
 function add_comment($comment) {
 
-	@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+	@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
 	#here we add the html entities and string escaping
 	$comment= htmlentities($comment);
@@ -76,7 +76,7 @@ if(isset($_POST['username'], $_POST['password'])) {
     $inputusername = stripslashes($_POST['username']);
     $inputuserpass = stripslashes($_POST['password']);
 
-    @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+    @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
     $query = ("SELECT userid, username, userpass FROM users WHERE username = ?");
     $stmt = $db->prepare($query);
@@ -111,20 +111,18 @@ if(isset($_POST['username'], $_POST['password'])) {
 
 
 
-<html>
+<html id="accounthtml">
   <head>
 
     <link rel="stylesheet" href="main.css">
     <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
     <title>Creative Colony</title>
   </head>
-  <body>
+  <body id="accountbody">
     <header>
-      <?php
 
-      ?>
     </header>
-    <main>
+    <main id="accountmain">
 
       <?php
 
@@ -144,7 +142,7 @@ if(isset($_POST['username'], $_POST['password'])) {
        ?>
 
 
-      <h2>Account</h2>
+      <h2 id="accounth2">Account</h2>
 
       <form class="forms" action="" method="post">
         <input type="text" name="username" placeholder="username">
@@ -157,20 +155,19 @@ if(isset($_POST['username'], $_POST['password'])) {
         <?php }elseif (isset($_SESSION['username'])) {
           $inputusername = ($_SESSION['username']);
           $userid = ($_SESSION['userid']);
-          echo ("<h2>{$inputusername}´s Portfolio</h2>");
+          echo ("<h2 id=portfolioname>{$inputusername}´s Portfolio</h2>");
 
           ?>
           <div class="accountoptions">
-            <h3>Account Options</h3>
-            <a class="accountlinks" href="upload.php" > Expand your portfolio with more fantastic content</a>
-            <a class="accountlinks" href="description.php">Edit your Portfolios description</a>
+            <div id="accountlinksfolder">
+              <a class="accountlinks" href="upload.php" >Edit your Portfolios description</a>
+              <a class="accountlinks" href="description.php">Expand your portfolio with more fantastic content</a>
+            </div>
+          <div id="accountinformation">
+            <h4 id="portfoliocreator">Creator: <?php echo "$inputusername"; ?></h4>
+            <h4 id="portfoliodescription"> <?php
 
-          <div class="accountoptions">
-            <h3><strong>Portfolio Information</strong></h3>
-            <h4>Creator: <?php echo "$inputusername"; ?></h4>
-            <h4>Description: <?php
-
-            @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+            @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
             $userid = ($_SESSION['userid']);
 
@@ -223,41 +220,37 @@ if(isset($_POST['username'], $_POST['password'])) {
               // while ($stmt->fetch()) {
                 ?>
                 </h4>
-<?php
+                <?php
               }
- ?>
+              ?>
 
 
           </div>
 
+          <div id="bigportfoliofolder">
           <?php
 
 
-          @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+          @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
           if (isset($_SESSION['username'])) {
             $userid = ($_SESSION['userid']);
             $stmt = $db->prepare("SELECT title, description, link FROM images WHERE userid = '{$userid}'");
             $stmt->execute();
             $stmt->bind_result($title, $description, $link);
-            $stmt->fetch();
 
-            ?>
-
-
-          $stmt = $db->prepare("SELECT title, description, link FROM images WHERE userid = '{$userid}'");
-          $stmt->execute();
-          $stmt->bind_result($title, $description, $link);
           while ($stmt->fetch()) {?>
-            <br><br>
-            <img class="portfolioimages" src="<?php echo $link; ?>" />
-            <h3 class="imagetitle"><?php echo $title; ?></h3>
-            <p class="imagedescription"><?php echo $description; ?></p>
-
+            <div class="portfolioimgfolders">
+              <br><br>
+              <img class="portfolioimages" src="<?php echo $link; ?>" />
+              <h3 class="imagetitle"><?php echo $title; ?></h3>
+              <p class="imagedescription"><?php echo $description; ?></p>
+            </div>
             <?php
           }
+          }
           ?>
-
+          </div>
         </div>
 <!-- above code developed from https://stackoverflow.com/questions/15735450/images-as-links-in-mysql-database -->
 
@@ -265,8 +258,13 @@ if(isset($_POST['username'], $_POST['password'])) {
 
 
     </main>
-    <?php
-     include("footer.php");
-    ?>
+    <footer id="accountfooter">
+      <a href="https://www.facebook.com/"><img src="img/fbicon.png" alt=""></a>
+      <a href="https://www.instagram.com/"><img src="img/igicon.png" alt=""></a>
+      <a href="https://www.youtube.com/"><img src="img/youtubeicon.png" alt=""></a>
+      <a href="https://www.twitter.com/"><img src="img/twittericon.png" alt=""></a>
+      <a href="mailto:example@gmail.com?"><img src="img/mailicon.png" alt=""></a>
+      <p>© 2017 CREATIVECOLONY.COM ALL RIGHTS RESERVED</p>
+    </footer>
   </body>
 </html>

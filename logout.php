@@ -14,7 +14,7 @@ session_destroy();
     <?php  include('header.php'); ?>
     </header>
     <main>
-      <h2>Thanks for your visit, See you soon!</h2>
+      <h2 id="logouth2">Thanks for your visit, See you soon!</h2>
     </main>
       <?php include('footer.php'); ?>
   </body>

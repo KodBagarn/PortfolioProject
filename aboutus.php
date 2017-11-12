@@ -14,7 +14,7 @@
       ?>
     </header>
     <main>
-      <h2>About us</h2>
+      <h2 id="aboutush2">About us</h2>
       <h4>Vision</h4>
       <p class="aboutusp">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

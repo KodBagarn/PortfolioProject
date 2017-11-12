@@ -4,7 +4,7 @@ session_start();
 
 //CHECK YOUR CONNECTION TO THE DATABASE
 
-@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -16,7 +16,7 @@ if ($db->connect_error) {
 
 if(isset($_FILES['upload'])){
 
-    @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+    @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
     $allowedextensions = array('jpeg', 'png', 'jpg');
     $extension = strtolower(substr($_FILES['upload']['name'], strpos($_FILES['upload']['name'], '.') +1));
@@ -83,8 +83,17 @@ $stmt->execute();
   <body id="uploadbody">
     <main id="uploadmain">
 
-      <form id="uploadform" method="post" enctype="multipart/form-data">
+      <?php
+      $inputusername = ($_SESSION['username']);
+      $userid = ($_SESSION['userid']);
+      echo "<h2 id=uploadh2>{$inputusername}´s Portfolio</h2>";
 
+
+      ?>
+
+      <form id="uploadform" method="post" enctype="multipart/form-data">
+        <a href="account.php"><img src="img/backicon.svg" alt=""></a>
+        <br><br>
         <p>Upload an image</p>
         <br><br>
         <input id="uploadbutton" type="file" name="upload" value="">

@@ -1,6 +1,6 @@
 <?php
 #check if we're connected to the database
-@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -14,7 +14,7 @@ if ($db->connect_error) {
 #basically it inserts a comment in a database.
 function add_userinfo(){
 
-  @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+  @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
   $newuser = $_POST['newuser'];
   $newpassword = sha1($_POST['newpassword']);
   $newfname = $_POST['firstname'];
@@ -119,7 +119,7 @@ if (isset($_POST['newuser'])) {
         <input type="text" name="phone" placeholder="Phone Number">
 
         <p id="mustfill">* Must be filled in</p>
-        <input class= "formsubmit" type="submit" name="register" value="Register">
+        <input class= "formsubmit" id="registersubmmit" type="submit" name="register" value="Register">
       </form>
       <?php
           if (isset($_POST['newuser'])) {
@@ -151,7 +151,7 @@ if (isset($_POST['newuser'])) {
 
 
 
-              die("<script>location.href = 'http://localhost/portfolioProject/portfolioProject/account.php'</script>");
+              die("<script>location.href = 'http://localhost:8888/portfolioProject/portfolioProject/account.php'</script>");
             }
           }
 

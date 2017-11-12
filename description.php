@@ -4,7 +4,7 @@ session_start();
 
 //CHECK YOUR CONNECTION TO THE DATABASE
 
-@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -41,9 +41,7 @@ header("location:account.php");
   </head>
   <body id="uploadbody">
     <main id="uploadmain">
-      <br>
-      <br>
-      <br>
+
     <?php
     $inputusername = ($_SESSION['username']);
     $userid = ($_SESSION['userid']);
@@ -56,7 +54,8 @@ header("location:account.php");
 
 
       <form id="uploadform" action="" method="post">
-
+        <a href="account.php"><img src="img/backicon.svg" alt=""></a>
+        <br><br>
         <p>Write a short description about the contents of your portfolio!</p>
         <br>
         <textarea required id="descriptionfield" name="description" placeholder="Description" rows="4"></textarea>
