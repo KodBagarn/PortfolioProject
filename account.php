@@ -5,7 +5,7 @@
   include("header.php");
 
 
-@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -18,7 +18,7 @@ if ($db->connect_error) {
 
 function add_comment($comment) {
 
-	@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+	@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 	#here we add the html entities and string escaping
 	$comment= htmlentities($comment);
@@ -76,7 +76,7 @@ if(isset($_POST['username'], $_POST['password'])) {
     $inputusername = stripslashes($_POST['username']);
     $inputuserpass = stripslashes($_POST['password']);
 
-    @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+    @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
     $query = ("SELECT userid, username, userpass FROM users WHERE username = ?");
     $stmt = $db->prepare($query);
@@ -167,7 +167,7 @@ if(isset($_POST['username'], $_POST['password'])) {
             <h4 id="portfoliocreator">Creator: <?php echo "$inputusername"; ?></h4>
             <h4 id="portfoliodescription"> <?php
 
-            @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+            @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
             $userid = ($_SESSION['userid']);
 
@@ -231,19 +231,22 @@ if(isset($_POST['username'], $_POST['password'])) {
           <?php
 
 
-          @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+          @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
           if (isset($_SESSION['username'])) {
             $userid = ($_SESSION['userid']);
-            $stmt = $db->prepare("SELECT title, description, link FROM images WHERE userid = '{$userid}'");
+            $stmt = $db->prepare("SELECT imageid, title, description, link FROM images WHERE userid = '{$userid}'");
             $stmt->execute();
-            $stmt->bind_result($title, $description, $link);
+            $stmt->bind_result($imageid, $title, $description, $link);
+
+
 
 
           while ($stmt->fetch()) {?>
             <div class="portfolioimgfolders">
               <br><br>
               <img class="portfolioimages" src="<?php echo $link; ?>" />
+            <?php  echo '<a id="imagedeletelink" href="deleteimage.php?imageid=' . urlencode($imageid) . '"><img src="img/cross.png"></a> '; ?>
               <h3 class="imagetitle"><?php echo $title; ?></h3>
               <p class="imagedescription"><?php echo $description; ?></p>
             </div>

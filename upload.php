@@ -4,7 +4,7 @@ session_start();
 
 //CHECK YOUR CONNECTION TO THE DATABASE
 
-@ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+@ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
 if ($db->connect_error) {
     echo "could not connect: " . $db->connect_error;
@@ -16,7 +16,7 @@ if ($db->connect_error) {
 
 if(isset($_FILES['upload'])){
 
-    @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+    @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
     $allowedextensions = array('jpeg', 'png', 'jpg');
     $extension = strtolower(substr($_FILES['upload']['name'], strpos($_FILES['upload']['name'], '.') +1));
