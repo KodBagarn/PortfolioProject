@@ -47,7 +47,7 @@
 
           $searchimages = addslashes($searchimages);
 
-          @ $db = new mysqli('localhost', 'root', 'root', 'portfoliodb');
+          @ $db = new mysqli('localhost', 'root', '', 'portfoliodb');
 
           if ($db->connect_error) {
               echo "could not connect: " . $db->connect_error;

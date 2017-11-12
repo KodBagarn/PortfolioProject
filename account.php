@@ -239,6 +239,7 @@ if(isset($_POST['username'], $_POST['password'])) {
             $stmt->execute();
             $stmt->bind_result($title, $description, $link);
 
+
           while ($stmt->fetch()) {?>
             <div class="portfolioimgfolders">
               <br><br>
